@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fdff;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.root{
+  position: relative;
+}
+
+.main-container{
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, 23%);
+  transform: translate(-50%, 23%);
+
+  .container{
+    position: relative;
+  }
+
+  .labels{
+    position: absolute;
+    display: inline-grid;
+    top: 18px;
+    right: -40px;
+
+    button{
+      border:none;
+      position: relative;
+      color: #fff;
+      height: 30px;
+      margin-bottom: 5px;
+
+      &:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        /* left: 0; */
+        right: -25px;
+        /* margin: 0 auto; */
+        width: 0;
+        height: 0;
+        border-top: solid 15px transparent !important;
+        border-left: solid 25px;
+        border-bottom: solid 15px transparent !important;
+      }
+    }
+    .blue{
+      background-color: #134481;
+      &::after{
+        border-color: #134481;
+      }
+    }
+    .orange{
+      background-color: orangered;
+      &::after{
+        border-color: orangered;
+      }
+    }
+    .green{
+      background-color: #31b243;
+      &::after{
+        border-color: #31b243;
+      }
+    }
+    .yellow{
+      background-color: #bccf24;
+      &::after{
+        border-color: #bccf24;
+      }
+    }
+    .pink{
+      background-color: #d82566;
+      &::after{
+        border-color: #d82566;
+      }
+    }
+  }
+  
+  .content{
+    margin-top: -1px;
+    background-color: #b0ecff;
+    border-radius: 29px;
+    padding: 20px;
+    min-width: 800px;
+  }
+}
+.title{
+  display: table;
+  margin: auto;
+  h1{
+    display: table-cell;
+    vertical-align: bottom;
+  }
+  img{
+    height: 100px
+  }
+}
+.weight-chart{
+  background-color: #fff;
+  border-radius: 10px
+}

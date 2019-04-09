@@ -1,6 +1,7 @@
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
 
 module.exports = smp.wrap({
@@ -20,14 +21,15 @@ module.exports = smp.wrap({
           use: {
             loader: "babel-loader"
           }
+        },{ 
+          test: /\.scss$/i, 
+          exclude: /node_modules/, 
+          use: ['style-loader', 'css-loader', 'sass-loader'] 
         }, {
             test: /\.css$/,
             loader: "style-loader!css-loader"
         },
-        {
-            test: /\.(sass|scss)$/,
-            use: ['sass-loader']
-        }, {
+         {
             loader: require.resolve('file-loader'),
             exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.(css|scss)$/, /\.json$/]
           }
@@ -42,6 +44,7 @@ module.exports = smp.wrap({
         }),
         new webpack.DefinePlugin({
             'HOMEPAGE': JSON.stringify('/'),
+            'PUBLIC_URL': JSON.stringify('/public')
         })
       ]
   });    
