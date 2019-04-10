@@ -10,9 +10,16 @@ import carteirinhaRoutes from '../containers/Carteirinha/routes';
 
 const routes = [{
     name: 'Carteirinha',
-    path: '/carteirinha/:tab?',
+    path: '(/carteirinha/:tab? || /)',
     component: Carteirinha,
-    routes: carteirinhaRoutes
+    beforeReturn: (props) => {
+      console.log('opa')
+      const appHomeUrl = `/carteirinha/capa`;
+      if (props.location.pathname === `/carteirinha`) {
+        props.history.replace(appHomeUrl);
+      }
+    },
+    routes: carteirinhaRoutes,
   },{
     component: Login,
     routes: [{

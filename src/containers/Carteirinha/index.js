@@ -10,6 +10,9 @@ export default class Carteirinha extends Component {
         this.state = {};
     }
 
+    handleClickLabel(label) {
+        this.props.history.push(`/carteirinha/${label}`);
+    }
 
     render() {
     return (
@@ -25,10 +28,10 @@ export default class Carteirinha extends Component {
                     <ChildRoutes {...this.props} />
                 </div>
                 <div className="labels">
-                    <button className="label pink">Capa</button>
-                    <button className="label orange">Cadastros</button>
-                    <button className="label blue">Agenda</button>
-                    <button className="label green">Gráficos</button>
+                    <button className="label pink" onClick={() => this.handleClickLabel('capa')}>Capa</button>
+                    <button className="label orange" onClick={() => this.handleClickLabel('cadastros')}>Cadastros</button>
+                    <button className="label blue" onClick={() => this.handleClickLabel('agenda')}>Agenda</button>
+                    <button className="label green" onClick={() => this.handleClickLabel('graficos')}>Gráficos</button>
                     <button className="label yellow">Sair</button>
                 </div>
             </div>
