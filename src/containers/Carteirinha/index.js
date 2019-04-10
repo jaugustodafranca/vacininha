@@ -7,7 +7,8 @@ export default class Carteirinha extends Component {
   
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+        };
     }
 
     handleClickLabel(label) {
@@ -18,7 +19,43 @@ export default class Carteirinha extends Component {
         this.props.history.push(`/login`);
     }
 
+
     render() {
+
+        var labels = [{
+            name: 'Capa',
+            key: 'capa',
+            color: 'pink'
+          }, {
+            name: 'Cadastros',
+            key: 'cadastros',
+            color: 'orange'
+          }, {
+            name: 'Agenda',
+            key: 'agenda',
+            color: 'blue'
+          }, {
+            name: 'Gráficos',
+            key: 'graficos',
+            color: 'green'
+          }];
+      
+        const labelsComponent = labels.map((item) => {
+            console.log(this.props.match.params)
+          const isActive = item.key === this.props.match.params.tab;
+          const CSSClass = `label ${item.color} ${ isActive ? 'is-selected' : '' }`;
+          return (
+            <button
+              className={CSSClass}
+              onClick={() =>this.handleClickLabel(item.key)}
+              key={item.key}>
+              {item.name}
+            </button>
+          );
+        });
+
+
+
     return (
         <React.Fragment>
         
@@ -27,15 +64,12 @@ export default class Carteirinha extends Component {
                 <img src={logo} />
                 <h1>Vacininha</h1>
             </div>
-            <div className="container" >
+            <div className=" carteirinha" >
                 <div className="content">
                     <ChildRoutes {...this.props} />
                 </div>
                 <div className="labels">
-                    <button className="label pink" onClick={() => this.handleClickLabel('capa')}>Capa</button>
-                    <button className="label orange" onClick={() => this.handleClickLabel('cadastros')}>Cadastros</button>
-                    <button className="label blue" onClick={() => this.handleClickLabel('agenda')}>Agenda</button>
-                    <button className="label green" onClick={() => this.handleClickLabel('graficos')}>Gráficos</button>
+                    {labelsComponent}
                     <button className="label yellow"  onClick={() => this.handleLogout()}>Sair</button>
                 </div>
             </div>

@@ -10,6 +10,7 @@ export default class Carteirinha extends Component {
 	render () {
     var classes = (this.props.className) ? this.props.className: '';
   	return (
+      <div className='grafico'>
       <ResponsiveContainer width={"100%"} height={400} className={classes}>
         <LineChart data={data}
               margin={{top: 5, right: 30, left: 20, bottom: 5}}>
@@ -22,6 +23,7 @@ export default class Carteirinha extends Component {
           <Line type="monotone" strokeWidth={3} dataKey="peso" name='Peso' stroke="#82ca9d" />
         </LineChart>
       </ResponsiveContainer>
+      </div>
     );
   }
 }
