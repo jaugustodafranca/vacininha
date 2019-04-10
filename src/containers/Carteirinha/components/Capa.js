@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import bebe from '../../../images/bebe.png';
 
 export default class Capa extends Component {
   
@@ -10,7 +11,11 @@ export default class Capa extends Component {
 
     render() {
     return (
-        <p>Capa</p>
+        <div className="capa">
+            <h3>Miguel</h3>
+            <p>2 Meses</p>
+            <img src={bebe} />
+        </div>
         );
     }
 }

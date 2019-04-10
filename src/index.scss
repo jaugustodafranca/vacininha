@@ -19,11 +19,7 @@ code {
 
 .main-container{
   text-align: center;
-  margin: 0;
-  position: absolute;
-  left: 50%;
-  -ms-transform: translate(-50%, 23%);
-  transform: translate(-50%, 23%);
+  margin: auto;
 
   .container{
     position: relative;
@@ -110,4 +106,13 @@ code {
 .weight-chart{
   background-color: #fff;
   border-radius: 10px
+}
+.capa{
+  img{
+    border-radius: 50%;
+    background-color: #fff;
+    height: 200px;
+    width: 200px;
+    object-fit: contain
+  }
 }

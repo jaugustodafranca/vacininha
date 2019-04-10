@@ -14,6 +14,10 @@ export default class Carteirinha extends Component {
         this.props.history.push(`/carteirinha/${label}`);
     }
 
+    handleLogout() {
+        this.props.history.push(`/login`);
+    }
+
     render() {
     return (
         <React.Fragment>
@@ -32,7 +36,7 @@ export default class Carteirinha extends Component {
                     <button className="label orange" onClick={() => this.handleClickLabel('cadastros')}>Cadastros</button>
                     <button className="label blue" onClick={() => this.handleClickLabel('agenda')}>Agenda</button>
                     <button className="label green" onClick={() => this.handleClickLabel('graficos')}>Gráficos</button>
-                    <button className="label yellow">Sair</button>
+                    <button className="label yellow"  onClick={() => this.handleLogout()}>Sair</button>
                 </div>
             </div>
         </div>

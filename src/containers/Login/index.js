@@ -12,7 +12,7 @@ export default class Login extends Component {
     return (
         
         <div className="main-container">
-            olá
+            Login
         </div>
         );
     }

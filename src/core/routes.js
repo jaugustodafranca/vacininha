@@ -10,7 +10,7 @@ import carteirinhaRoutes from '../containers/Carteirinha/routes';
 
 const routes = [{
     name: 'Carteirinha',
-    path: '(/carteirinha/:tab? || /)',
+    path: '/carteirinha/:tab?',
     component: Carteirinha,
     beforeReturn: (props) => {
       console.log('opa')

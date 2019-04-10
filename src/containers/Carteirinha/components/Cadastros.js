@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from '../../../components/Form';
 
 export default class Cadastros extends Component {
   
@@ -10,7 +11,10 @@ export default class Cadastros extends Component {
 
     render() {
     return (
-        <p>Cadastros</p>
+        <div className="cadastros">
+            <p>Cadastros</p>
+            <Form />
+        </div>
         );
     }
 }
