@@ -7,12 +7,14 @@ export default class Login extends Component {
         this.state = {};
     }
 
-
+    handleLogin() {
+        this.props.history.push(`/carteirinha`);
+    }
     render() {
     return (
         
         <div className="main-container">
-            Login
+            <a onClick={() => this.handleLogin()}>Login</a>
         </div>
         );
     }
