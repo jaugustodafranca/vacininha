@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Login extends Component {
+export default class Capa extends Component {
   
     constructor(props){
         super(props);
@@ -10,10 +10,7 @@ export default class Login extends Component {
 
     render() {
     return (
-        
-        <div className="main-container">
-            olá
-        </div>
+        <p>Capa</p>
         );
     }
 }

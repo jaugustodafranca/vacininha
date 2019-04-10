@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import LineChart from '../../components/LineChart.js';
 import Calendar from "../../components/Calendar.js";
 import logo from '../../images/vacininha.png';
+import ChildRoutes from '../../core/ChildRoutes'; 
 
 export default class Carteirinha extends Component {
   
@@ -22,16 +22,14 @@ export default class Carteirinha extends Component {
             </div>
             <div className="container" >
                 <div className="content">
-                    
-                    <h3>Evolução da Criança</h3>
-                    <LineChart className="weight-chart"/>
+                    <ChildRoutes {...this.props} />
                 </div>
                 <div className="labels">
-                    <button className="label pink">Dados</button>
-                    <button className="label orange">Graficos</button>
-                    <button className="label blue">Graficos</button>
-                    <button className="label green">Graficos</button>
-                    <button className="label yellow">Graficos</button>
+                    <button className="label pink">Capa</button>
+                    <button className="label orange">Cadastros</button>
+                    <button className="label blue">Agenda</button>
+                    <button className="label green">Gráficos</button>
+                    <button className="label yellow">Sair</button>
                 </div>
             </div>
         </div>
