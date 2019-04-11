@@ -138,3 +138,48 @@ code {
   width: calc(100% - 80px);
   margin: auto;
 }
+
+.main-home{
+  background-color: #ade9ff;
+}  
+
+.main-home h1{
+  font-family: 'Courier New', Courier, monospace;
+
+}  
+.main-home p{
+  font-family: 'Courier New', Courier, monospace;
+  text-align: justify;
+  
+}
+
+.home-texto{
+  position: relative;
+  margin-top: 100px;
+  width: 50%;
+  height: 50%;
+}
+
+.home-left{
+  width: 60%;
+  display: inline-flex;
+  position: relative;
+  
+}
+.home-right{
+
+  width: 40%;
+  margin-top: 70px;
+  padding: 3%;
+  display: inline-flex;
+  float: right;
+}
+.botoes-login{
+  background-color: rgba(182, 182, 182, 0.253);
+  border-radius: 5px;
+}
+.botoes-login #titulo{
+  margin-left: 10%;
+  margin-top: 15px;
+  display: inherit;
+}
