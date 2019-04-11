@@ -48,11 +48,11 @@ export default class Login extends Component {
                 <img src={logo} />
                 <div className="home-texto">
                     <h1>O que é a Vacininha?</h1>
-                    <p>Além de informar todas as datas de vacinação
+                    <p>Além de informar todas as datas de vacinação,
                        a Vacininha também faz o acompanhamento do 
                        crescimento do seu filho (peso e altura).
                        O melhor é que tudo fica disponível na plataforma
-                       para você acessar de onde e quando você quiser.
+                       para você acessar de onde e quando você quiser!
                     </p>   
                 </div>
             </div>
