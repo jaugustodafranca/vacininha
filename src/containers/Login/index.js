@@ -15,7 +15,7 @@ firebase.initializeApp(config);
 // Configure FirebaseUI.
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
-  signInFlow: '/carteirinha',
+  signInFlow: 'popup',
   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
   signInSuccessUrl: '/carteirinha',
   // We will display Google and Facebook as auth providers.
@@ -46,11 +46,11 @@ export default class Login extends Component {
                 <img src={logo} />
                 <div className="home-texto">
                     <h1>O que é a Vacininha?</h1>
-                    <p>Além de informar todas as datas de vacinação
+                    <p>Além de informar todas as datas de vacinação,
                        a Vacininha também faz o acompanhamento do 
                        crescimento do seu filho (peso e altura).
                        O melhor é que tudo fica disponível na plataforma
-                       para você acessar de onde e quando você quiser.
+                       para você acessar de onde e quando você quiser!
                     </p>   
                 </div>
             </div>

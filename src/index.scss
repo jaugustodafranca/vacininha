@@ -139,43 +139,51 @@ code {
   margin: auto;
 }
 
-.main-home{
-  background-color: #ade9ff;
-}  
-
-.main-home h1{
-  font-family: 'Courier New', Courier, monospace;
-
-}  
-.main-home p{
-  font-family: 'Courier New', Courier, monospace;
-  text-align: justify;
-  
+.main-home {
+  background-color: #ade9ff;  
+  height: 100vh;
+  p,h1,span{
+    font-family: 'Courier New', Courier, monospace;
+  }
+  p {
+    text-align: justify;
+  }
 }
 
 .home-texto{
+  margin: auto;
   position: relative;
   margin-top: 100px;
-  width: 50%;
+  width: 45%;
   height: 50%;
 }
 
 .home-left{
-  width: 60%;
+  width: 66%;
   display: inline-flex;
   position: relative;
+
+  img{
+    margin:auto;
+    height: 350px;
+    margin-top: 80px
+  }
   
 }
 .home-right{
 
-  width: 40%;
+  width: 33%;
   margin-top: 70px;
   padding: 3%;
   display: inline-flex;
   float: right;
+  
+  span{
+    font-family: 'Courier New', Courier, monospace;
+  }
 }
 .botoes-login{
-  background-color: rgba(182, 182, 182, 0.253);
+  margin: auto;
   border-radius: 5px;
 }
 .botoes-login #titulo{
