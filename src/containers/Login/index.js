@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import logo from '../../images/vacininha.png';
 // Import FirebaseAuth and firebase.
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebaseui from 'react-firebaseui';
 import firebase from 'firebase';
 
 // Configure Firebase.
 const config = {
-  apiKey: 'AIzaSyAeue-AsYu76MMQlTOM-KlbYBlusW9c1FM',
-  authDomain: 'myproject-1234.firebaseapp.com',
+  apiKey: 'AIzaSyAIiLAT3FskK6XmULSw_213ydLgvESO0-g',
+  authDomain: 'vacininha.firebaseapp.com',
   // ...
 };
 firebase.initializeApp(config);
@@ -15,7 +16,8 @@ firebase.initializeApp(config);
 // Configure FirebaseUI.
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
-  signInFlow: '/carteirinha',
+  signInFlow: 'popup',
+  'credentialHelper': 'none',
   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
   signInSuccessUrl: '/carteirinha',
   // We will display Google and Facebook as auth providers.
