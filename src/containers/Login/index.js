@@ -36,7 +36,7 @@ export default class Login extends Component {
     }
 
     handleLogin() {
-        this.props.history.push(`/carteirinha`);
+        this.props.history.push(`carteirinha`);
     }
 
     render() {
