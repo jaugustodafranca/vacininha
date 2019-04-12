@@ -42,7 +42,6 @@ export default class Login extends Component {
     render() {
     return (
         <React.Fragment>
-        <a onClick={() => this.handleLogin()}>Login</a>
         <div className="main-home">
             <div className="home-left">
                 <img src={logo} />

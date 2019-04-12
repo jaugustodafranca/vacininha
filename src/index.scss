@@ -97,8 +97,6 @@ code {
   
   .content{
     margin-top: -1px;
-    background-color: #b0ecff;
-    border-radius: 29px;
     padding: 20px;
   }
 }
@@ -133,6 +131,8 @@ code {
   margin-right: auto;
   margin-left: auto;
   position: relative;
+  background-color: #ade9ff;  
+  border-radius: 29px;
 }
 .grafico{
   width: calc(100% - 80px);
@@ -140,8 +140,10 @@ code {
 }
 
 .main-home {
+  height: 100%;
+  min-height: 100vh;
+  display: inline-flex;
   background-color: #ade9ff;  
-  height: 100vh;
   p,h1,span{
     font-family: 'Courier New', Courier, monospace;
   }
@@ -153,7 +155,6 @@ code {
 .home-texto{
   margin: auto;
   position: relative;
-  margin-top: 100px;
   width: 45%;
   height: 50%;
 }
@@ -173,10 +174,8 @@ code {
 .home-right{
 
   width: 33%;
-  margin-top: 70px;
   padding: 3%;
   display: inline-flex;
-  float: right;
   
   span{
     font-family: 'Courier New', Courier, monospace;
@@ -190,4 +189,49 @@ code {
   margin-left: 10%;
   margin-top: 15px;
   display: inherit;
+}
+/*STYLE FOR SCREEN W/ LESS THEN 560PX*/
+@media screen and (max-width: 560px) {
+  .home-left, .home-right{
+    width: 100%;
+    display: block;
+  }
+  .main-home{
+    display: block;
+    text-align: center;
+  }
+  .home-left{
+    img{
+      height: 150px;
+      margin-top: 20px;
+    }
+  }
+  .home-texto {
+    width: 100%;
+    margin-top: 25px;
+    padding: 0 20px;
+  }
+
+  .main-container {
+
+    padding: 0;
+
+    .carteirinha{
+      width: 100%;
+      padding: 0;
+      border-radius: 0;
+      height: calc(100vh - 100px);
+    }
+    .labels {
+      position: initial;
+      display: -webkit-inline-box;
+
+      button{
+
+        &:after{
+          content: none;
+        }
+      }
+    }
+  }
 }

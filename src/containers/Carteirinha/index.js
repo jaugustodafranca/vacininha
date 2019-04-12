@@ -65,12 +65,12 @@ export default class Carteirinha extends Component {
                 <h1>Vacininha</h1>
             </div>
             <div className=" carteirinha" >
-                <div className="content">
-                    <ChildRoutes {...this.props} />
-                </div>
                 <div className="labels">
                     {labelsComponent}
                     <button className="label yellow"  onClick={() => this.handleLogout()}>Sair</button>
+                </div>
+                <div className="content">
+                    <ChildRoutes {...this.props} />
                 </div>
             </div>
         </div>
