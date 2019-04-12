@@ -11,10 +11,9 @@ import store from './store';
 
 
 const App = (props) => {
-    const basename = document.querySelector('base') ? document.querySelector('base').getAttribute('href') : null;
     return (
       <Provider store={store}>
-        <Router basename={basename || ''}>
+        <Router basename={process.env.PUBLIC_URL}>
           <ChildRoutes {...props} routes={baseRoutes}/>
         </Router>
       </Provider>
