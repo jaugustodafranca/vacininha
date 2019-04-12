@@ -31,6 +31,7 @@ code {
     display: block;
     top: 18px;
     left: 92%;
+    z-index: 100;
 
     button{
       border:none;
@@ -186,8 +187,6 @@ code {
   border-radius: 5px;
 }
 .botoes-login #titulo{
-  margin-left: 10%;
-  margin-top: 15px;
   display: inherit;
 }
 /*STYLE FOR SCREEN W/ LESS THEN 560PX*/
@@ -220,13 +219,18 @@ code {
       width: 100%;
       padding: 0;
       border-radius: 0;
-      height: calc(100vh - 100px);
+      min-height: calc(100vh - 100px);
     }
     .labels {
-      position: initial;
-      display: -webkit-inline-box;
+      display: inline-block;
+      position: inherit;
+      width: 100%;
+      left: 0;
+      top:0;
 
       button{
+        width: 100%;
+        margin-bottom: 0;
 
         &:after{
           content: none;
