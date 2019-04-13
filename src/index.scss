@@ -189,6 +189,13 @@ code {
 .botoes-login #titulo{
   display: inherit;
 }
+.agenda{
+  min-height: 400px;
+  background-color: #fff;
+  .rbc-calendar{
+    min-height: 70vh;
+  }
+}
 /*STYLE FOR SCREEN W/ LESS THEN 560PX*/
 @media screen and (max-width: 560px) {
   .home-left, .home-right{
