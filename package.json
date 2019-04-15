@@ -27,6 +27,7 @@
   "scripts": {
     "start": "webpack && webpack-dev-server --open --mode development",
     "build": "webpack --config webpack.config.build.js --mode production",
+    "build:firebase": "webpack --config webpack.config.firebase.js --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

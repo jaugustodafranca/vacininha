@@ -41,7 +41,6 @@ export default class Carteirinha extends Component {
           }];
       
         const labelsComponent = labels.map((item) => {
-            console.log(this.props.match.params)
           const isActive = item.key === this.props.match.params.tab;
           const CSSClass = `label ${item.color} ${ isActive ? 'is-selected' : '' }`;
           return (

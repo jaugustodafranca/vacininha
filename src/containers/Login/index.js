@@ -3,7 +3,8 @@ import logo from '../../images/vacininha.png';
 // Import FirebaseAuth and firebase.
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebaseui from 'react-firebaseui';
-import firebase from 'firebase';
+import firebase from "firebase/app";
+import "firebase/auth";
 
 // Configure Firebase.
 const config = {

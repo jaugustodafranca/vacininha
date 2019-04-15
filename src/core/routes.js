@@ -13,7 +13,6 @@ const routes = [{
     path: '/carteirinha/:tab?',
     component: Carteirinha,
     beforeReturn: (props) => {
-      console.log('opa')
       const appHomeUrl = `/carteirinha/capa`;
       if (props.location.pathname === `/carteirinha`) {
         props.history.replace(appHomeUrl);
