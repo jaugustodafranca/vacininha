@@ -33,12 +33,11 @@ export default class Login extends Component {
             signInFlow: 'popup',
             credentialHelper: 'none',
             callbacks: {
-                signInSuccess : function(currentUser, credential, redirectUrl) {
-                    const userId = currentUser.uid; 
-                    console.log(currentUser);
+                signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                    console.log(authResult);
                     props.history.push(`carteirinha`);
                     return false;
-                },
+                  }
             },
             // We will display Google and Facebook as auth providers.
             signInOptions: [
