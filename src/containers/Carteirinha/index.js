@@ -60,7 +60,7 @@ export default class Carteirinha extends Component {
         
         <div className="main-container">
             <div className="title">
-                <img src={logo} />
+                <img src={logo} alt="Logo vacininha"/>
                 <h1>Vacininha</h1>
             </div>
             <div className=" carteirinha" >

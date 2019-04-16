@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = smp.wrap({
     entry: ['./src/index.js'],
@@ -44,6 +45,7 @@ module.exports = smp.wrap({
         new webpack.DefinePlugin({
             'HOMEPAGE': JSON.stringify('/'),
             'PUBLIC_URL': JSON.stringify('/public')
-        })
+        }),
+        new WorkboxPlugin.GenerateSW()
       ]
   });    
