@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
-const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = smp.wrap({
     entry: ['./src/index.js'],
@@ -44,9 +43,8 @@ module.exports = smp.wrap({
           template: './public/index.html'
         }),
         new webpack.DefinePlugin({
-            'HOMEPAGE': JSON.stringify('/'),
+            'HOMEPAGE': JSON.stringify('/vacininha/'),
             'PUBLIC_URL': JSON.stringify('/public')
-        }),
-        new WorkboxPlugin.GenerateSW()
+        })
       ]
   });    

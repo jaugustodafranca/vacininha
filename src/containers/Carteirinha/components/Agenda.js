@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Calendar from '../../../components/Calendar'
 
 export default class Agenda extends Component {
   
@@ -10,7 +11,10 @@ export default class Agenda extends Component {
 
     render() {
     return (
-        <p>Agenda</p>
+        <div>
+            <p>Agenda</p>
+            <Calendar/>
+        </div>
         );
     }
 }

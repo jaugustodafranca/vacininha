@@ -41,7 +41,6 @@ export default class Carteirinha extends Component {
           }];
       
         const labelsComponent = labels.map((item) => {
-            console.log(this.props.match.params)
           const isActive = item.key === this.props.match.params.tab;
           const CSSClass = `label ${item.color} ${ isActive ? 'is-selected' : '' }`;
           return (
@@ -61,16 +60,16 @@ export default class Carteirinha extends Component {
         
         <div className="main-container">
             <div className="title">
-                <img src={logo} />
+                <img src={logo} alt="Logo vacininha"/>
                 <h1>Vacininha</h1>
             </div>
             <div className=" carteirinha" >
-                <div className="content">
-                    <ChildRoutes {...this.props} />
-                </div>
                 <div className="labels">
                     {labelsComponent}
                     <button className="label yellow"  onClick={() => this.handleLogout()}>Sair</button>
+                </div>
+                <div className="content">
+                    <ChildRoutes {...this.props} />
                 </div>
             </div>
         </div>
