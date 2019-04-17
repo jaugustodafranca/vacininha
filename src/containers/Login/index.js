@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../../images/vacininha.png';
 // Import FirebaseAuth and firebase.
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebaseui from 'react-firebaseui';
+import Alert from '../../components/Alert';
 import firebase from "firebase/app";
 import "firebase/auth";
 
@@ -19,7 +19,9 @@ export default class Login extends Component {
   
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+            showAlert: true
+        };
     }
 
     handleLogin() {
@@ -48,6 +50,13 @@ export default class Login extends Component {
         };
         return (
             <div className="main-home">
+                <Alert
+                    theme="warning"
+                    visible={this.state.showAlert}
+                    fixed="top-right"
+                    onClose={this.closeAlertHandler.bind(this)}>
+                        <strong>Você deve logar para acessar o conteudo</strong>
+                </Alert>
                 <div className="home-left">
                     <img src={logo} />
                     <div className="home-texto">
@@ -68,5 +77,9 @@ export default class Login extends Component {
                 </div>
             </div>
         );
+    }
+
+    closeAlertHandler() {
+        this.setState({ showAlert: false });
     }
 }

@@ -8,27 +8,31 @@ import NotFoundRoute from '../containers/NotFoundRoute';
 // Routes
 import carteirinhaRoutes from '../containers/Carteirinha/routes';
 
-const routes = [{
+const routes = [
+  {
+    component: Login,
+    name: 'Login',
+    path: '/login',
+  },{
     name: 'Carteirinha',
-    path: '/carteirinha/:tab?',
+    path: ['/carteirinha/:tab?','/'],
     component: Carteirinha,
+    exact:true,
     beforeReturn: (props) => {
+      console.log('test s')
       const appHomeUrl = `/carteirinha/capa`;
-      if (props.location.pathname === `/carteirinha`) {
+      if (props.location.pathname === `/carteirinha`  ||
+          props.location.pathname === `/carteirinha/` ||
+          props.location.pathname === `/` ) {
         props.history.replace(appHomeUrl);
       }
     },
     routes: carteirinhaRoutes,
   },{
-    component: Login,
-    routes: [{
-      name: 'Login',
-      path: '/login',
-      component: Login,
-    },  {
-    path: '**',
+    name: 'Not Found Route',
+    path: '/:anything',
     component: NotFoundRoute
-  }]
-}];
+  }
+];
 
 export default routes;
