@@ -5,7 +5,20 @@ import myEventsList from './events.js'
 import '../styles/react-big-calendar.scss';
 
 const localizer = BigCalendar.momentLocalizer(moment)
-
+const messages = {
+    allDay: 'Dia inteiro',
+    previous: 'Anterior',
+    next: 'Próximo',
+    today: 'Hoje',
+    month: 'Mês',
+    week: 'Semana',
+    day: 'Dia',
+    agenda: 'Agenda',
+    date: 'Data',
+    time: 'Hora',
+    event: 'Evento',
+    showMore: total => `+ ${total} evento(s) adicionais(s)`
+  };
 export default class Calendar extends Component {
   
     constructor(props){
@@ -20,6 +33,8 @@ export default class Calendar extends Component {
             events={myEventsList}
             startAccessor="start"
             endAccessor="end"
+            messages={messages}
+            views={['month','agenda']}
             />
         </div>)
   }
