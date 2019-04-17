@@ -10,9 +10,12 @@ export default class Form extends Component {
         return(
         <div>
             {/* FORMULÁRIO PARA ADIÇÃO DE PESO E ALTURA DA CRIANÇA */}
-            <form>
-                <label htmlFor="Weight">Peso(Kg)</label>
-                <input></input>
+            <form className="registros">
+                <label htmlFor="weight">Peso(Kg)</label>
+                <input type="number" name="weight" id="weight"></input>
+                <label htmlFor="height">Altura(cm)</label>
+                <input type="number" name="height" id="height"></input>
+                <button>Adicionar novo registro</button>
             </form>
         </div>)
   }
