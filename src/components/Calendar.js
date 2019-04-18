@@ -3,6 +3,7 @@ import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
 import myEventsList from './events.js'
 import '../styles/react-big-calendar.scss';
+import Agenda from 'customAgenda'
 
 const localizer = BigCalendar.momentLocalizer(moment)
 const messages = {
@@ -34,7 +35,11 @@ export default class Calendar extends Component {
             startAccessor="start"
             endAccessor="end"
             messages={messages}
-            views={['month','agenda']}
+            /*views={['month','agenda']}*/
+            views={{
+                month: true,
+                myweek: Agenda,
+              }}
             />
         </div>)
   }

@@ -233,7 +233,10 @@ code {
       width: 100%;
       max-height: 0px;
       overflow: hidden;
-      transition:  0.9s ease-in-out;
+      transition:  0.9s ease-in-out;      
+      border-radius: 15px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
 
       &.is-open{
         max-height: 100vh;
@@ -259,4 +262,14 @@ code {
   .title button {
     display: initial;
   }
+
+  .navbar-dark.btn{
+    position: absolute;
+    right: 4vw;
+    top: 2vh;
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(2, 160, 218,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }
+  }
+
 }
