@@ -8,7 +8,9 @@ export default class Carteirinha extends Component {
     constructor(props){
         super(props);
         this.state = {
+          isOpen: false
         };
+        if (props.beforeReturn) props.beforeReturn(props);
     }
 
     handleClickLabel(label) {
@@ -18,7 +20,7 @@ export default class Carteirinha extends Component {
     handleLogout() {
         this.props.history.push(`/login`);
     }
-
+    
 
     render() {
 
@@ -41,7 +43,6 @@ export default class Carteirinha extends Component {
           }];
       
         const labelsComponent = labels.map((item) => {
-            console.log(this.props.match.params)
           const isActive = item.key === this.props.match.params.tab;
           const CSSClass = `label ${item.color} ${ isActive ? 'is-selected' : '' }`;
           return (
@@ -54,18 +55,21 @@ export default class Carteirinha extends Component {
           );
         });
 
-
+        let cssLabels = (!this.state.isOpen)? 'labels' : 'labels is-open'
 
     return (
         <React.Fragment>
         
         <div className="main-container">
             <div className="title">
-                <img src={logo} />
+                <img src={logo} alt="Logo vacininha"/>
                 <h1>Vacininha</h1>
+                <button className='navbar-dark btn' onClick={this.handleTogglerButton.bind(this)}>
+                  <span class="navbar-toggler-icon"/>
+                </button>
             </div>
             <div className=" carteirinha" >
-                <div className="labels">
+                <div className={cssLabels}>
                     {labelsComponent}
                     <button className="label yellow"  onClick={() => this.handleLogout()}>Sair</button>
                 </div>
@@ -76,5 +80,9 @@ export default class Carteirinha extends Component {
         </div>
         </React.Fragment>
         );
+    }
+
+    handleTogglerButton(){
+      this.setState({isOpen: !this.state.isOpen});
     }
 }

@@ -1,3 +1,4 @@
+const path = require('path');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,13 +8,11 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = smp.wrap({
     entry: ['./src/index.js'],
-    output: { pathinfo: true },
-    devtool: 'eval',
-    devServer: {
-        contentBase: './public',
-        hot: true,
-        historyApiFallback: true
+    output: {
+      path: path.resolve(__dirname, './firebase')
     },
+    devtool: 'source-map',
+    optimization: { minimize: true },
     module: {
       rules: [
         {

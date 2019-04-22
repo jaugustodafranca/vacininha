@@ -11,6 +11,8 @@
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-big-calendar": "^0.20.4",
+    "react-bootstrap-table-next": "^3.1.1",
+    "react-bootstrap-table2-editor": "^1.2.3",
     "react-dom": "^16.8.6",
     "react-firebaseui": "^3.1.2",
     "react-hot-loader": "^4.8.3",
@@ -27,6 +29,7 @@
   "scripts": {
     "start": "webpack && webpack-dev-server --open --mode development",
     "build": "webpack --config webpack.config.build.js --mode production",
+    "build:firebase": "webpack --config webpack.config.firebase.js --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -52,7 +55,8 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "webpack-cli": "^3.3.0",
+    "workbox-webpack-plugin": "^4.3.0"
   },
   "PUBLIC_URL": "https://localhost:8080"
 }
