@@ -11,9 +11,10 @@ class Auth extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="not-found">
         {/* NotFoundRoute */}
-        404
+        <h1 className="title">404 ERROR</h1>
+        <h3 className="description">Page Not Found</h3>
       </div>
     );
   }
