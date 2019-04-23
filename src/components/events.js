@@ -9,6 +9,7 @@ export default [
     allDay: true,
     start: moment(),
     end: moment(),
+    status: true,
   },
   {
     id: 1,
@@ -16,6 +17,7 @@ export default [
     allDay: true,
     start: moment(),
     end: moment(),
+    status: false,
   },
 
   {
@@ -127,12 +129,5 @@ export default [
     allDay: true,
     start: moment().add(5, 'months'),
     end: moment().add(5, 'months'),
-  },
-  {
-    id: 90,
-    title: 'Happy Hour',
-    start: new Date(2019, 3, 12, 17, 0, 0, 0),
-    end: new Date(2019, 3, 12, 17, 30, 0, 0),
-    desc: 'Most important meal of the day',
   },
 ]

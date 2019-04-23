@@ -5,6 +5,7 @@ import events from './events'
 import BigCalendar from 'react-big-calendar'
 import TimeGrid from 'react-big-calendar/lib/TimeGrid'
 import moment from 'moment';
+import Icon from './Icon'
 
 class View extends React.Component {
   render() {
@@ -18,10 +19,11 @@ class View extends React.Component {
     let events = this.props.events.sort((a,b) =>{ return a.start > b.start});
     let eventList = Object.values(org).map(i => {
         return i.map((item, index) =>{
+            let iconClass = (item.status == undefined || item.status == null)? 'question-circle':(item.status)?'check-circle':'times-circle' 
             return(
                 <tr>
                     {index ==0 ?<td rowspan={i.length} className='rbc-agenda-date-cell'>{moment(item.start).format('DD/MM/YYYY')}</td>:null}
-                    <td ref="a" className='rbc-agenda-time-cell'>Status</td>
+                    <td ref="a" className='rbc-agenda-status-cell'><Icon name={iconClass} fal large/></td>
                     <td ref="b" className='rbc-agenda-event-cell'>{item.title}</td>
                 </tr>
             );

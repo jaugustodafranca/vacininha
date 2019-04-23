@@ -65,7 +65,7 @@ export default class Carteirinha extends Component {
                 <img src={logo} alt="Logo vacininha"/>
                 <h1>Vacininha</h1>
                 <button className='navbar-dark btn' onClick={this.handleTogglerButton.bind(this)}>
-                  <span class="navbar-toggler-icon"/>
+                  <span className="navbar-toggler-icon"/>
                 </button>
             </div>
             <div className=" carteirinha" >

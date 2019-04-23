@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = smp.wrap({
     entry: ['./src/index.js'],
@@ -40,12 +41,32 @@ module.exports = smp.wrap({
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
           inject: true,
-          template: './public/index.html'
+          template: './public/index.html',
+          minify: {
+            removeComments: true,
+            collapseWhitespace: true,
+            removeRedundantAttributes: true,
+            useShortDoctype: true,
+            removeEmptyAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            keepClosingSlash: true,
+            minifyJS: true,
+            minifyCSS: true,
+            minifyURLs: true,
+          }
         }),
         new webpack.DefinePlugin({
             'HOMEPAGE': JSON.stringify('/'),
             'PUBLIC_URL': JSON.stringify('/public')
         }),
-        new WorkboxPlugin.GenerateSW()
+        new WorkboxPlugin.GenerateSW(),
+        new CopyWebpackPlugin([
+          './public/',
+          '!./public/index.html'
+        ]),
+        new webpack.ContextReplacementPlugin(
+          /moment[\/\\]locale$/,
+          /pt-br/
+        )
       ]
   });    

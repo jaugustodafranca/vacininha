@@ -18,7 +18,7 @@ const messages = {
     date: 'Data',
     time: 'Hora',
     event: 'Evento',
-    myweek: 'Custom',
+    myweek: 'Eventos',
     showMore: total => `+ ${total} evento(s) adicionais(s)`
   };
 export default class Calendar extends Component {
