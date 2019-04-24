@@ -5,6 +5,7 @@ import myEventsList from './events.js'
 import '../styles/react-big-calendar.scss';
 import Agenda from './customAgenda'
 
+moment.locale('pt-br')
 const localizer = BigCalendar.momentLocalizer(moment)
 const messages = {
     allDay: 'Dia inteiro',
