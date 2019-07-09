@@ -15,6 +15,7 @@
     "react-big-calendar": "^0.20.4",
     "react-bootstrap-table-next": "^3.1.1",
     "react-bootstrap-table2-editor": "^1.2.3",
+    "react-bootstrap-table2-paginator": "^2.0.7",
     "react-dom": "^16.8.6",
     "react-firebaseui": "^3.1.2",
     "react-hot-loader": "^4.8.3",
