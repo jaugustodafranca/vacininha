@@ -19,6 +19,7 @@ export default class Carteirinha extends Component {
     console.log(this.props.isFetching, 'is f')
   	return (
       <div className='grafico'>
+      <div className="spinner"></div>
       <ResponsiveContainer width={"100%"} height={400} className={classes}>
         <LineChart data={this.props.data}
               margin={{top: 5, right: 30, left: 20, bottom: 5}}>

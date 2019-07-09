@@ -99,6 +99,7 @@ class Carteiras extends React.Component {
             </div>
             <div className=" carteirinha" >
                 <div className="content">
+                <div className="spinner"></div>  
                   <div className="display-cards"> 
                     {this.props.isFetching.carteirinhas?
                     'loading': 
