@@ -51,7 +51,7 @@ export class Login extends Component {
                     visible={this.state.showAlert}
                     fixed="top-right"
                     onClose={this.closeAlertHandler.bind(this)}>
-                        <strong>Você deve logar para acessar o conteudo</strong>
+                        <strong>Você deve logar para acessar o conteúdo</strong>
                 </Alert>
                 <div className="home-left">
                     <img src={logo} />

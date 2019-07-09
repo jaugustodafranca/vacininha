@@ -13,7 +13,9 @@ export default class Graficos extends Component {
     render() {
     return (
         <React.Fragment>
-        <h3>Evolução da Criança</h3>
+        <h3>Gráfico peso X idade</h3>
+        <LineChart className="weight-chart"/><br/><br/>
+        <h3>Gráfico altura X idade</h3>
         <LineChart className="weight-chart"/>
         </React.Fragment>
         );
