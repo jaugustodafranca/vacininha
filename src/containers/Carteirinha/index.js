@@ -24,10 +24,6 @@ export class Carteirinha extends Component {
     handleLogout() {
         this.props.history.push(`/login`);
     }
-    
-    componentDidMount(){
-      this.props.fetchCarteirinhas();
-    }
 
     render() {
 
@@ -95,4 +91,5 @@ export class Carteirinha extends Component {
 }
 
 export default connect((store) => ({ 
+  currentUser: store.carteirinha.currentUser,
 }), actions)(Carteirinha);
