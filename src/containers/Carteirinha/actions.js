@@ -162,3 +162,30 @@ export const postCarteira = (body) => (dispatch) => {
       });
   });
 };
+export const changeVaccine = (body) => (dispatch) => {
+
+  return promiseWrapper((resolve, reject, delay) => { 
+    request.post('vacinas', body)
+      .then((response) => { 
+        delay(() => {
+          dispatch({
+            type: 'SAVE_DATACSV',
+            payload: response.data
+          });
+          dispatch({
+            type: 'UPDATE_DATACSV',
+            payload: body
+          });
+          resolve();
+          
+        });
+      })
+      .catch((error) => { 
+        dispatch({
+          type: 'SAVE_DATACSV_ERROR',
+          payload: error
+        }); 
+        reject();
+      });
+  });
+};

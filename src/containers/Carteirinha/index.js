@@ -23,7 +23,7 @@ export class Carteirinha extends Component {
 
     componentDidMount(){
       if(!this.props.currentUser){
-          this.props.history.push(`/carteiras`);
+        this.props.history.push(`/carteiras`);
       }
   	}
 
