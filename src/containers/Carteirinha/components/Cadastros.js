@@ -41,8 +41,7 @@ export class Cadastros extends Component {
         keyField="id"
         data={ this.props.measureDatas }
         columns={ columns }
-        cellEdit={ cellEditFactory({ mode: 'click' }) }
-        className="table"/>
+        cellEdit={ cellEditFactory({ mode: 'click' }) }/>
          <form className="registros" onSubmit={this.handleSubmit}>
             <label htmlFor="weight">Peso(Kg)</label>
             <input type="number" name="weight" id="weight" min="0" step="0.1"></input>
