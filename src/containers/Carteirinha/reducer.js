@@ -28,6 +28,11 @@ export default (state = initialState, action = {}) => {
   case 'LOGIN_SIGN_OUT':
     state = initialState;
     break;
+  case 'MEASURE_DATAS':
+    state = Object.assign({}, state, {
+      measureDatas: action.payload
+    });
+    break;  
   default:
     break;
   }
