@@ -27,7 +27,7 @@ export class Capa extends Component {
         var name = ""
         if(this.props.currentUser){
             name = this.props.currentUser.full_name;
-            photo = (this.props.currentUser.photo_url && this.props.currentUser.photo_url != "")? this.props.currentUser.photo_url:(!this.props.currentUser.gender_male)? female_photo: male_photo;
+            photo = (this.props.currentUser.photo_url && this.props.currentUser.photo_url!= "undefined" &&this.props.currentUser.photo_url != "")? this.props.currentUser.photo_url:(!this.props.currentUser.gender_male)? female_photo: male_photo;
             var diff = moment().diff(this.props.currentUser.birth_date, 'days');
             if(parseInt(diff+'') < 31){
                 idade = diff + "days";
