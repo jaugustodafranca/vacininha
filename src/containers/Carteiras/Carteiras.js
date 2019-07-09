@@ -5,6 +5,7 @@ import Card from '../../components/card'
 // Redux
 import { connect } from 'react-redux';
 import * as actions from '../Carteirinha/actions';
+import moment from 'moment';
 
 class Carteiras extends React.Component {
 
@@ -129,7 +130,7 @@ class Carteiras extends React.Component {
                         </div>
                         <div className="form-group">
                           <label for="recipient-name" className="col-form-label">Data de nascimento:</label>
-                          <input type="date" onChange={e => this.onBirthdayChange(e.target.value)} className="form-control" id="recipient-birthday" />
+                          <input type="date" onChange={e => this.onBirthdayChange(e.target.value)} max={moment().format("YYYY-MM-DD")}className="form-control" id="recipient-birthday" />
                         </div>
                         <div className="form-group">
                           <label for="recipient-name" className="col-form-label">Foto:</label>

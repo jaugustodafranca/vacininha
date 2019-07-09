@@ -39,8 +39,8 @@ export default class Calendar extends Component {
           title: row.name,
           vaccine_id: row.vaccine_id,
           allDay: true,
-          start: moment(row.vaccine_date),
-          end: moment(row.vaccine_date),
+          start: moment(row.vaccine_date).utc(false),
+          end: moment(row.vaccine_date).utc(false),
           status: row.has_applied,
         }
         return obj;
@@ -56,6 +56,7 @@ export default class Calendar extends Component {
           <BigCalendar
           localizer={localizer}
           events={this.state.parsedData}
+          defaultView={"myweek"}
           startAccessor="start"
           endAccessor="end"
           alterVaccineState={this.props.alterVaccineState.bind(this)}
