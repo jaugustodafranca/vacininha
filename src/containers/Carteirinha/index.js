@@ -31,6 +31,10 @@ export class Carteirinha extends Component {
         this.props.history.push(`/login`);
     }
 
+    handleChangeUser() {
+      this.props.history.push(`/carteiras`);
+    }
+
     render() {
 
         var labels = [{
@@ -80,6 +84,7 @@ export class Carteirinha extends Component {
             <div className=" carteirinha" >
                 <div className={cssLabels}>
                     {labelsComponent}
+                    <button className="label brown"  onClick={() => this.handleChangeUser()}>Trocar</button>
                     <button className="label yellow"  onClick={() => this.handleLogout()}>Sair</button>
                 </div>
                 <div className="content">

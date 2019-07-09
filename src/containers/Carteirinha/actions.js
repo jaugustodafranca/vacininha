@@ -115,9 +115,9 @@ export const fetchVaccines = (userId) => (dispatch) => {
   });
 };
 
-export const fetchMedidas = () => (dispatch) => {
+export const fetchMedidas = (userId) => (dispatch) => {
   promiseWrapper((resolve, reject, delay) => {
-    request.get(`/medidas/3`)
+    request.get(`/medidas/`+userId)
       .then((response) => {
         delay(() => {
           dispatch({

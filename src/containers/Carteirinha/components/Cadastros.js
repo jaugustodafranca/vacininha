@@ -22,9 +22,9 @@ export class Cadastros extends Component {
         this.state = {};
     }
     
-    componentDidMount() {
-        // GET Table 
-        this.props.fetchMedidas();    
+    componentDidMount() {   
+        this.props.fetchMedidas(this.props.currentUser.id);  
+          
     }
     
     handleSubmit(event) {
@@ -57,6 +57,7 @@ export class Cadastros extends Component {
 
 export default connect((store) => ({ 
     measureDatas: store.carteirinha.measureDatas,
+    currentUser: store.carteirinha.currentUser,
 }), actions)(Cadastros);
 
 

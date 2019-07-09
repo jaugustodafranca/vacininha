@@ -4,7 +4,7 @@ const Card = props =>{
 
     const male_photo = 'https://img.icons8.com/color/1600/circled-user-male-skin-type-1-2.png'
     const female_photo = 'https://www.grupoconduzir.com.br/wp-content/uploads/2017/10/avatar-pessoa-mulher.png'
-    const photo = (props.photo_url && props.photo_url != "")? props.photo : props.gender_male? male_photo : female_photo
+    var photo = (props.photo_url && props.photo_url != "")? props.photo_url : props.gender_male? male_photo : female_photo
 
     return(
         <div className="card" id="b-card">

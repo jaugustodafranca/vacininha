@@ -91,6 +91,12 @@ code {
         border-color: #bccf24;
       }
     }
+    .brown{
+      background-color: #ce6a0f;
+      &::after{
+        border-color: #ce6a0f;
+      }
+    }
     .pink{
       background-color: #d82566;
       &::after{
