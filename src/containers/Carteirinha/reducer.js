@@ -2,7 +2,8 @@ const initialState = {
   isSessionActive: null, 
   loggedUser: null, 
   currentUser: null,
-  carteirinhasData: []
+  carteirinhasData: [],
+  measureDatas: []
 };
 
 export default (state = initialState, action = {}) => {
