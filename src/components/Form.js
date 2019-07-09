@@ -24,6 +24,11 @@ export default class Form extends Component {
     //     // fetch()
     // }
     
+    handleSubmit(event) {
+        console.log('Submit'); 
+        event.preventDefault();
+    }
+    
     render(){
         return(
             <div>
@@ -32,7 +37,7 @@ export default class Form extends Component {
             data={ this.state.values }
             columns={ columns }
             cellEdit={ cellEditFactory({ mode: 'click' }) }/>
-             <form className="registros">
+             <form className="registros" onSubmit={this.handleSubmit}>
                 <label htmlFor="weight">Peso(Kg)</label>
                 <input type="number" name="weight" id="weight" min="0"></input>
                 <label htmlFor="height">Altura(cm)</label>
