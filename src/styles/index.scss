@@ -320,3 +320,7 @@ code {
   }
 
 }
+
+a.btn.btn-primary:not([href]):not([tabindex]) {
+  color: #fff;
+}

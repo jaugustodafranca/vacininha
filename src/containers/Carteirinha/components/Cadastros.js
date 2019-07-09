@@ -13,7 +13,7 @@ const dateFormatter = (cell, row) => {
     if(!cell){
       return " - "
     } 
-    return moment(cell).format("DD/MM/YYYY");
+    return moment(cell).utc(false).format("DD/MM/YYYY");
   }
 
 const columns = [{
