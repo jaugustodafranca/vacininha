@@ -39,6 +39,44 @@ class Carteiras extends React.Component {
                   <div className="display-cards"> 
                     { cards }
                   </div>
+                  <div className="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="exampleModalLabel">Novo(a) usuário(a)</h5>
+                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div className="modal-body">
+                          <form>
+                            <div className="form-group">
+                              <label for="recipient-name" className="col-form-label">Nome:</label>
+                              <input type="text" className="form-control" id="recipient-name" />
+                            </div>
+                            <div className="form-group">
+                              <label for="recipient-name" className="col-form-label">Gênero:</label>
+                              <input type="text" className="form-control" id="recipient-gender" />
+                            </div>
+                            <div className="form-group">
+                              <label for="recipient-name" className="col-form-label">Data de nascimento:</label>
+                              <input type="text" className="form-control" id="recipient-birthday" />
+                            </div>
+                            <div className="form-group">
+                              <label for="recipient-name" className="col-form-label">Foto:</label>
+                              <input type="file" className="form-control" id="recipient-photo" />
+                            </div>
+                          </form>
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                          <button type="button" className="btn btn-primary">Salvar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  
                   <div className="display-button">
                     <a href="#" className='btn btn-primary' id='add-button'>Adicionar Carteira</a>
                   </div>
