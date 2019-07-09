@@ -12,11 +12,15 @@ class Carteiras extends React.Component {
     super(props);
     this.state = { 
       isOpen: false,
+      name: String,
+      gender: String,
+      birthday: Date,
     };
   }
 
   componentDidMount(){
     this.props.fetchCarteirinhas();
+    
   }
 
   changeUser(user){
@@ -27,10 +31,38 @@ class Carteiras extends React.Component {
 
   isOpen () {
     this.setState({ 
-        isOpen: !this.state.isOpen
-      
+      isOpen: !this.state.isOpen
       })
-      console.log("this.setState")
+  }
+
+  saved () {
+    let gender = false;
+    if (this.state.gender == "true"){
+      gender = true
+    }
+    let body = {name: this.state.name, genero: gender, birth_date: this.state.birthday}
+    this.props.postCarteira(body).then(()=>{
+      this.props.fetchCarteirinhas();
+      this.isOpen();
+    });
+  }
+
+  onNameChange(value){
+    this.setState({
+      name: value
+    });
+  }
+
+  onGenderChange(value){
+    this.setState({
+      gender: value
+    });
+  }
+
+  onBirthdayChange(value){
+    this.setState({
+      birthday: value
+    });
   }
 
   render() {
@@ -66,7 +98,6 @@ class Carteiras extends React.Component {
                     <a onClick={()=>this.isOpen()} className='btn btn-primary' id='add-button'>Adicionar Carteira</a>
                   </div>
                 </div>
-          
               {this.state.isOpen ? 
                 <div className="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
@@ -81,15 +112,18 @@ class Carteiras extends React.Component {
                       <form>
                         <div className="form-group">
                           <label for="recipient-name" className="col-form-label">Nome:</label>
-                          <input type="text" className="form-control" id="recipient-name" />
+                          <input type="text" onChange={e => this.onNameChange(e.target.value)} className="form-control" id="recipient-name" />
                         </div>
                         <div className="form-group">
                           <label for="recipient-name" className="col-form-label">Gênero:</label>
-                          <input type="text" className="form-control" id="recipient-gender" />
+                          <select type="text" onChange={e => this.onGenderChange(e.target.value)} className="form-control" id="recipient-gender">
+                            <option value="false">Feminino</option>
+                            <option value="true">Masculino</option>
+                          </select>
                         </div>
                         <div className="form-group">
                           <label for="recipient-name" className="col-form-label">Data de nascimento:</label>
-                          <input type="text" className="form-control" id="recipient-birthday" />
+                          <input type="date" onChange={e => this.onBirthdayChange(e.target.value)} className="form-control" id="recipient-birthday" />
                         </div>
                         <div className="form-group">
                           <label for="recipient-name" className="col-form-label">Foto:</label>
@@ -99,7 +133,7 @@ class Carteiras extends React.Component {
                     </div>
                     <div className="modal-footer">
                       <button type="button" onClick={()=>this.isOpen()} className="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                      <button type="button" className="btn btn-primary">Salvar</button>
+                      <button type="button" onClick={()=>this.saved()} className="btn btn-primary">Salvar</button>
                     </div>
                   </div>
                 </div>

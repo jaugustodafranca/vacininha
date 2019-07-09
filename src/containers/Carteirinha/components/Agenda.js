@@ -4,6 +4,7 @@ import Calendar from '../../../components/Calendar';
 // Redux
 import { connect } from 'react-redux';
 import * as actions from './../actions';
+import moment from 'moment';
 
 export class Agenda extends Component {
   
@@ -18,6 +19,17 @@ export class Agenda extends Component {
         }
     }
 
+    alterVaccineState(row){
+        var body = {
+            user_id: this.props.currentUser.id,
+            date: moment(),
+            vaccine_id : row.vaccine_id,
+        }
+        this.props.changeVaccine(body).then(() => {
+            this.props.fetchVaccines(body.user_id);
+        });
+        console.log(row)
+    }
 
     render() {
 
@@ -25,7 +37,7 @@ export class Agenda extends Component {
     return (
         <div>
             <p>Agenda</p>
-            <Calendar data={this.props.vaccinesData}/>
+            <Calendar alterVaccineState={this.alterVaccineState.bind(this)} data={this.props.vaccinesData}/>
         </div>
         );
     }

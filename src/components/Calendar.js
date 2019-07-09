@@ -37,6 +37,7 @@ export default class Calendar extends Component {
         var obj = {
           id: index,
           title: row.name,
+          vaccine_id: row.vaccine_id,
           allDay: true,
           start: moment(row.vaccine_date),
           end: moment(row.vaccine_date),
@@ -57,6 +58,7 @@ export default class Calendar extends Component {
           events={this.state.parsedData}
           startAccessor="start"
           endAccessor="end"
+          alterVaccineState={this.props.alterVaccineState.bind(this)}
           messages={messages}
           views={{
               month: true,

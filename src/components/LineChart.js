@@ -8,6 +8,13 @@ export default class Carteirinha extends Component {
         this.state = {};
     }
 	render () {
+    var key = {name: "Peso", key:"peso"};
+    if(this.props.height){
+      key = {
+        name: "Altura",
+        key:"height"
+      }
+    }
     var classes = (this.props.className) ? this.props.className: '';
   	return (
       <div className='grafico'>
@@ -19,8 +26,8 @@ export default class Carteirinha extends Component {
           <CartesianGrid strokeDasharray="3 3"/>
           <Tooltip/>
           <Legend />
-          <Line type="monotone" strokeWidth={3} dataKey="pesoMedia" name='Média' stroke="#8884d8" activeDot={{r: 8}}/>
-          <Line type="monotone" strokeWidth={3} dataKey="peso" name='Peso' stroke="#82ca9d" />
+          <Line type="monotone" strokeWidth={3} dataKey="media" name='Média' stroke="#8884d8" activeDot={{r: 8}}/>
+          <Line type="monotone" strokeWidth={3} dataKey={key.key} name={key.name} stroke="#82ca9d" />
         </LineChart>
       </ResponsiveContainer>
       </div>
