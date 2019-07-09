@@ -5,6 +5,7 @@ import LineChart from '../../../components/LineChart';
 // Redux
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import moment from 'moment';
 export class Graficos extends Component {
   
     constructor(props){
@@ -13,18 +14,38 @@ export class Graficos extends Component {
     }
 
     componentDidMount(){
-        this.props.fetchMedidas(this.props.currentUser.id)
+        if(this.props.currentUser){
+            this.props.fetchMedidas(this.props.currentUser.id);
+        }
     }
 
     render() {
         console.log(this.props.measureDatas)
-    return (
-        <React.Fragment>
-        <h3>Gráfico peso X idade</h3>
-        <LineChart data={this.props.measureDatas} className="weight-chart"/><br/><br/>
-        <h3>Gráfico altura X idade</h3>
-        <LineChart className="weight-chart"/>
-        </React.Fragment>
+        let weight = (this.props.measureDatas || []).map((row)=>{
+            let res = {
+                peso: row.weight,
+                name: moment(row.date).format("DD/MM/YYYY"),
+                media: row.weight
+            };
+            return res;
+        }); 
+    
+        let height = (this.props.measureDatas || []).map((row)=>{
+            let res = {
+                height: row.height,
+                name: moment(row.date).format("DD/MM/YYYY"),
+                media: row.height
+            };
+            return res;
+        });
+
+        return (
+            <React.Fragment>
+            <h3>Gráfico peso X idade</h3>
+            <LineChart data={weight} className="weight-chart"/><br/><br/>
+            <h3>Gráfico altura X idade</h3>
+            <LineChart data={height} height className="weight-chart"/>
+            </React.Fragment>
         );
     }
 }

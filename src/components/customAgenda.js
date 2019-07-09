@@ -21,7 +21,7 @@ class View extends React.Component {
         return i.map((item, index) =>{
             let iconClass = (item.status == undefined || item.status == null)? 'question-circle':(item.status)?'check-circle':'times-circle' 
             return(
-                <tr>
+                <tr onClick={() => this.props.alterVaccineState(item)}>
                     {index ==0 ?<td rowspan={i.length} className='rbc-agenda-date-cell'>{moment(item.start).format('DD/MM/YYYY')}</td>:null}
                     <td ref="a" className='rbc-agenda-status-cell'><Icon name={iconClass} fal large/></td>
                     <td ref="b" className='rbc-agenda-event-cell'>{item.title}</td>
