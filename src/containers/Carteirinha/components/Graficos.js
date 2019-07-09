@@ -41,14 +41,15 @@ export class Graficos extends Component {
         return (
             <React.Fragment>
             <h3>Gráfico peso X idade</h3>
-            <LineChart data={weight} className="weight-chart"/><br/><br/>
+            <LineChart isFetching={this.props.isFetching.medidas} data={weight} className="weight-chart"/><br/><br/>
             <h3>Gráfico altura X idade</h3>
-            <LineChart data={height} height className="weight-chart"/>
+            <LineChart isFetching={this.props.isFetching.medidas} data={height} height className="weight-chart"/>
             </React.Fragment>
         );
     }
 }
 export default connect((store) => ({ 
     currentUser: store.carteirinha.currentUser,
-    measureDatas: store.carteirinha.measureDatas
+    measureDatas: store.carteirinha.measureDatas,
+    isFetching: store.carteirinha.isFetching
   }), actions)(Graficos);

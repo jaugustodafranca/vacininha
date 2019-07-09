@@ -25,8 +25,7 @@ export class Carteirinha extends Component {
       this.props.checkLogin().then((res) => {  
         if(!res || res === 0){
           this.props.history.push(`/carteiras`);
-        }else if(!this.props.currentUser){
-          console.log("entrou aqui");
+        }else if(!this.props.currentUser){ 
           this.props.fetchCarteirinhas().then(() =>{
             var user = (this.props.carteirinhasData||[]).find(user => user.id == res);
             this.props.changeUser(user);

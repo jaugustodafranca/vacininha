@@ -6,11 +6,25 @@ const initialState = {
   measureDatas: [],
   vaccinesData: [],
   currentUserId: null,
+  isFetching: {
+    medidas: false,
+    carteirinhas: false,
+    vacinas: false
+  }
 };
 
 export default (state = initialState, action = {}) => {
 
   switch (action.type) {
+  case 'IS_FETCHING':
+    let isFetching = { ...state.isFetching };
+    if (action.dataType === 'all') {
+      Object.keys(isFetching).forEach((item) => isFetching[item] = action.payload);
+    } else {
+      isFetching = { ...isFetching, ...{ [action.dataType]: action.payload } };
+    }
+    state = { ...state, ...{ isFetching: isFetching } };
+    break;
   case 'SET_CURRENT_USER':
     state = Object.assign({}, state, { 
       currentUser: action.payload
@@ -48,8 +62,7 @@ export default (state = initialState, action = {}) => {
   case 'CURRENT_USER_ID':
     state = Object.assign({}, state, { 
       currentUserId: action.payload
-    });
-    console.log(state,'state')
+    }); 
     break;
     
     case 'MEASURE_UPDATE_DATAS':

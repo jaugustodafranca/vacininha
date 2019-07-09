@@ -104,8 +104,7 @@ export class Cadastros extends Component {
 
     render() {
     return (
-        <div>
-            {console.log(this.props)}
+        <div> 
         <BootstrapTable
         keyField="date"
         data={ this.props.measureDatas }
@@ -133,7 +132,8 @@ export class Cadastros extends Component {
 export default connect((store) => ({ 
     measureDatas: store.carteirinha.measureDatas,
     currentUser: store.carteirinha.currentUser,
-    measureUpdateDatas: store.carteirinha.measureUpdateDatas
+    measureUpdateDatas: store.carteirinha.measureUpdateDatas,
+    isFetching: store.carteirinha.isFetching
 }), actions)(Cadastros);
 
 

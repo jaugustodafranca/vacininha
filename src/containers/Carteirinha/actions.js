@@ -42,10 +42,12 @@ export const checkLogin = () => (dispatch, store) => {
 };
 
 export const fetchCarteirinhas = (query) => (dispatch) => { 
+  dispatch(isFetchingData(true, 'carteirinhas'));
   return promiseWrapper((resolve, reject, delay) => { 
     request.get(`/carteirinhas`)
       .then((response) => {
         delay(() => {
+          dispatch(isFetchingData(false, 'carteirinhas'));
           dispatch({
             type: 'CARTEIRAS_DATA',
             errorRequest: false,
@@ -55,6 +57,7 @@ export const fetchCarteirinhas = (query) => (dispatch) => {
         });
       })
       .catch((error) => {
+        dispatch(isFetchingData(false, 'carteirinhas'));
         dispatch({
           type: 'CARTEIRAS_DATA',
           errorRequest: true,
@@ -81,10 +84,12 @@ export const changeUser = (user) => (dispatch) =>{
 }
 
 export const fetchVaccines = (userId) => (dispatch) => {
+  dispatch(isFetchingData(true, 'vacinas'));
   promiseWrapper((resolve, reject, delay) => {
     request.get(`/vacinas/`+userId)
       .then((response) => {
         delay(() => {
+          dispatch(isFetchingData(false, 'vacinas'));
           dispatch({
             type: 'VACCINES_DATA',
             errorRequest: false,
@@ -94,6 +99,7 @@ export const fetchVaccines = (userId) => (dispatch) => {
         });
       })
       .catch((error) => {
+        dispatch(isFetchingData(false, 'vacinas'));
         dispatch({
           type: 'VACCINES_DATA',
           errorRequest: true,
@@ -105,10 +111,12 @@ export const fetchVaccines = (userId) => (dispatch) => {
 };
 
 export const fetchMedidas = (userId) => (dispatch) => {
+  dispatch(isFetchingData(true, 'medidas'));
   promiseWrapper((resolve, reject, delay) => {
     request.get(`/medidas/`+userId)
       .then((response) => {
         delay(() => {
+          dispatch(isFetchingData(false, 'medidas'));
           dispatch({
             type: 'MEASURE_DATAS',
             errorRequest: false,
@@ -118,6 +126,7 @@ export const fetchMedidas = (userId) => (dispatch) => {
         });
       })
       .catch((error) => {
+        dispatch(isFetchingData(false, 'medidas'));
         dispatch({
           type: 'MEASURE_DATAS',
           errorRequest: true,

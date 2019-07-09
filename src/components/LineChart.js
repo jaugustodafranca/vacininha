@@ -16,6 +16,7 @@ export default class Carteirinha extends Component {
       }
     }
     var classes = (this.props.className) ? this.props.className: '';
+    console.log(this.props.isFetching, 'is f')
   	return (
       <div className='grafico'>
       <ResponsiveContainer width={"100%"} height={400} className={classes}>

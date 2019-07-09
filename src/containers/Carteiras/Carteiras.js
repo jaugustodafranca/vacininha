@@ -89,6 +89,7 @@ class Carteiras extends React.Component {
         <Card changeUser={this.changeUser.bind(this)} {...user} />
       )
     }); 
+    console.log(this.props.isFetching.carteirinhas)
     return(
       <React.Fragment>
         <div className="main-container">
@@ -99,7 +100,9 @@ class Carteiras extends React.Component {
             <div className=" carteirinha" >
                 <div className="content">
                   <div className="display-cards"> 
-                    { cards }
+                    {this.props.isFetching.carteirinhas?
+                    'loading': 
+                      cards }
                   </div>
                   <div className="display-button">
                     <a onClick={()=>this.isOpen()} className='btn btn-primary' id='add-button'>Adicionar Carteira</a>
@@ -158,5 +161,6 @@ export default connect((store) => ({
   loginIsSuccess: store.login.isSuccess,
   loginIsRecoverSuccess: store.login.isRecoverSuccess,
   user: store.login.user,
-  currentUser: store.carteirinha.currentUser
+  currentUser: store.carteirinha.currentUser,
+  isFetching: store.carteirinha.isFetching
 }), actions)(Carteiras);

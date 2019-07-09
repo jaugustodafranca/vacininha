@@ -52,4 +52,5 @@ export class Capa extends Component {
 }
 export default connect((store) => ({ 
     currentUser: store.carteirinha.currentUser,
+    isFetching: store.carteirinha.isFetching
   }), actions)(Capa);

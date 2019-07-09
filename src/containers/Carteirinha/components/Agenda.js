@@ -43,5 +43,6 @@ export class Agenda extends Component {
 }
 export default connect((store) => ({ 
     currentUser: store.carteirinha.currentUser,
-    vaccinesData: store.carteirinha.vaccinesData
+    vaccinesData: store.carteirinha.vaccinesData,
+    isFetching: store.carteirinha.isFetching 
 }), actions)(Agenda);
