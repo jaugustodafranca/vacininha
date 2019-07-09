@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import LineChart from '../../../components/LineChart';
 
+// Redux
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 export class Graficos extends Component {
   
     constructor(props){
@@ -14,10 +17,11 @@ export class Graficos extends Component {
     }
 
     render() {
+        console.log(this.props.measureDatas)
     return (
         <React.Fragment>
         <h3>Gráfico peso X idade</h3>
-        <LineChart data={measureDatas} className="weight-chart"/><br/><br/>
+        <LineChart data={this.props.measureDatas} className="weight-chart"/><br/><br/>
         <h3>Gráfico altura X idade</h3>
         <LineChart className="weight-chart"/>
         </React.Fragment>
