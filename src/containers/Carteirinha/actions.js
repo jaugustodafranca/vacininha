@@ -138,3 +138,27 @@ export const fetchMedidas = (userId) => (dispatch) => {
       });
   });
 };
+
+export const postCarteira = (body) => (dispatch) => {
+  return promiseWrapper((resolve, reject, delay) => {
+    request.post(`/carteirinhas`, body)
+      .then((response) => {
+        delay(() => {
+          dispatch({
+            type: 'CARTEIRINHA_POST',
+            errorRequest: false,
+            payload: response.data
+          });
+          resolve();
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: 'CARTEIRINHA_POST',
+          errorRequest: true,
+          payload: []
+        });
+        reject();
+      });
+  });
+};

@@ -20,6 +20,7 @@ class Carteiras extends React.Component {
 
   componentDidMount(){
     this.props.fetchCarteirinhas();
+    
   }
 
   changeUser(user){
@@ -35,7 +36,15 @@ class Carteiras extends React.Component {
   }
 
   saved () {
-    console.log(this.state.name, this.state.gender, this.state.birthday)
+    let gender = false;
+    if (this.state.gender == "true"){
+      gender = true
+    }
+    let body = {name: this.state.name, genero: gender, birth_date: this.state.birthday}
+    this.props.postCarteira(body).then(()=>{
+      this.props.fetchCarteirinhas();
+      this.isOpen();
+    });
   }
 
   onNameChange(value){
