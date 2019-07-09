@@ -3,7 +3,11 @@ import Calendar from "../../components/Calendar.js";
 import logo from '../../images/vacininha.png';
 import ChildRoutes from '../../core/ChildRoutes'; 
 
-export default class Carteirinha extends Component {
+// Redux
+import { connect } from 'react-redux';
+import * as actions from './actions';
+
+export class Carteirinha extends Component {
   
     constructor(props){
         super(props);
@@ -21,6 +25,9 @@ export default class Carteirinha extends Component {
         this.props.history.push(`/login`);
     }
     
+    componentDidMount(){
+      this.props.fetchCarteirinhas();
+    }
 
     render() {
 
@@ -86,3 +93,6 @@ export default class Carteirinha extends Component {
       this.setState({isOpen: !this.state.isOpen});
     }
 }
+
+export default connect((store) => ({ 
+}), actions)(Carteirinha);

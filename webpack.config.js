@@ -45,7 +45,11 @@ module.exports = smp.wrap({
         }),
         new webpack.DefinePlugin({
             'HOMEPAGE': JSON.stringify('/'),
-            'PUBLIC_URL': JSON.stringify('/public')
+            'PUBLIC_URL': JSON.stringify('/public'),
+            'BASE_API_URL': JSON.stringify(
+              'https://vacininha.herokuapp.com/'
+              //'http://localhost:8081'
+            )
         }),
         new WorkboxPlugin.GenerateSW()
       ]

@@ -6,16 +6,11 @@ import Alert from '../../components/Alert';
 import firebase from "firebase/app";
 import "firebase/auth";
 
-// Configure Firebase.
-const config = {
-  apiKey: 'AIzaSyAIiLAT3FskK6XmULSw_213ydLgvESO0-g',
-  authDomain: 'vacininha.firebaseapp.com',
-  // ...
-};
-firebase.initializeApp(config);
+// Redux
+import { connect } from 'react-redux';
+import * as actions from './actions';
 
-
-export default class Login extends Component {
+export class Login extends Component {
   
     constructor(props){
         super(props);
@@ -37,6 +32,7 @@ export default class Login extends Component {
             callbacks: {
                 signInSuccessWithAuthResult: function(authResult, redirectUrl) {
                     console.log(authResult);
+                    props.login(authResult);
                     props.history.push(`carteirinha`);
                     return false;
                   }
@@ -83,3 +79,9 @@ export default class Login extends Component {
         this.setState({ showAlert: false });
     }
 }
+
+export default connect((store) => ({ 
+    eventKey: store.login.eventKey,
+    loginIsSuccess: store.login.isSuccess,
+    loginIsRecoverSuccess :store.login.isRecoverSuccess
+}), actions)(Login);
