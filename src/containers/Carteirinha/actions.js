@@ -85,3 +85,27 @@ export const fetchCarteirinhas = (query) => (dispatch) => {
       });
   });
 };
+
+export const fetchMedidas = () => (dispatch) => {
+  promiseWrapper((resolve, reject, delay) => {
+    request.get(`/medidas/3`)
+      .then((response) => {
+        delay(() => {
+          dispatch({
+            type: 'MEASURE_DATAS',
+            errorRequest: false,
+            payload: response.data
+          });
+          resolve();
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: 'MEASURE_DATAS',
+          errorRequest: true,
+          payload: []
+        });
+        reject();
+      });
+  });
+};
