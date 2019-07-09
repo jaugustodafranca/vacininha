@@ -1,0 +1,18 @@
+// Cateirinha
+.display-cards{
+    display: flex;
+    text-align: center;
+
+    .card{
+        width: 270px;
+        border-radius: 5px;
+        border-width: 4px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+    
+        .img{
+            height: 250px;
+            width: 250px
+        }
+    }
+}

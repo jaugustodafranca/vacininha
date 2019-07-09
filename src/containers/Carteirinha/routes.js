@@ -5,7 +5,6 @@ import Cadastros from './components/Cadastros';
 import Agenda from './components/Agenda';
 import Graficos from './components/Graficos';
 
-
 const routes = [{
   name: 'Cadastros',
   path: '/carteirinha/cadastros',

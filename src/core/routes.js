@@ -3,6 +3,7 @@
 import Login from '../containers/Login';
 import Carteirinha from '../containers/Carteirinha';
 import NotFoundRoute from '../containers/NotFoundRoute';
+import Carteiras from '../containers/Carteiras/Carteiras'
 
 
 // Routes
@@ -19,8 +20,7 @@ const routes = [
     component: Carteirinha,
     exact:true,
     beforeReturn: (props) => {
-      console.log('test s')
-      const appHomeUrl = `/carteirinha/capa`;
+    const appHomeUrl = `/carteirinha/capa`;
       if (props.location.pathname === `/carteirinha`  ||
           props.location.pathname === `/carteirinha/` ||
           props.location.pathname === `/` ) {
@@ -28,6 +28,10 @@ const routes = [
       }
     },
     routes: carteirinhaRoutes,
+  },{
+    name: 'Carteiras',
+    path: '/carteiras',
+    component: Carteiras
   },{
     name: 'Not Found Route',
     path: '/:anything',
