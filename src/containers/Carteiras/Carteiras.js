@@ -24,7 +24,7 @@ class Carteiras extends React.Component {
       if(res || res == 0){ 
         this.props.fetchCarteirinhas(); 
       }else{
-        //this.props.history.push(`/login/`);
+        this.props.history.push(`/login/`);
       }
     });  
   }
