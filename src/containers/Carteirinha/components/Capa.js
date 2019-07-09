@@ -10,7 +10,12 @@ export class Capa extends Component {
   
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+        };
+    }
+
+    handleClickLabel(label) {
+        this.props.history.push(`/carteiras/`);
     }
 
     componentDidMount(){
@@ -18,7 +23,6 @@ export class Capa extends Component {
             this.props.history.push(`/carteiras`);
         }
     }
-
 
     render() {
 
@@ -45,6 +49,9 @@ export class Capa extends Component {
                 <h3>{name}</h3>
                 <p>{idade}</p>
                 <img src={photo} />
+                <div className="change-button">
+                    <a onClick={()=>this.handleClickLabel()} className='btn btn-primary' >Alterar Carteira</a>
+                </div>
             </div>
             );
     }
