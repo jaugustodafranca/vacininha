@@ -38,7 +38,10 @@ export default (state = initialState, action = {}) => {
     state = Object.assign({}, state, { 
       vaccinesData: action.payload
     });
-    break;  
+    break;
+    case 'MEASURE_UPDATE_DATAS':
+     console.log(state);
+      break;  
   default:
     break;
   }
