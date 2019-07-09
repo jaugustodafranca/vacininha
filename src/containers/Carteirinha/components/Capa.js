@@ -30,7 +30,7 @@ export class Capa extends Component {
             photo = (this.props.currentUser.photo_url && this.props.currentUser.photo_url!= "undefined" &&this.props.currentUser.photo_url != "")? this.props.currentUser.photo_url:(!this.props.currentUser.gender_male)? female_photo: male_photo;
             var diff = moment().diff(this.props.currentUser.birth_date, 'days');
             if(parseInt(diff+'') < 31){
-                idade = diff + "days";
+                idade = diff + " dias";
             }else if(parseInt(diff+'') < 365){
                 idade = moment().diff(this.props.currentUser.birth_date, 'months') + " Meses";
             }else{
