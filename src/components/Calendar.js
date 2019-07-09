@@ -46,6 +46,7 @@ export default class Calendar extends Component {
         return obj;
       })
       this.setState({parsedData:parsed})
+      return null;
     }
 
   }
@@ -66,7 +67,9 @@ export default class Calendar extends Component {
               'myweek': Agenda,
             }}
           />
-          <div className="spinner"></div>
+          {this.props.isFetching?
+            <div className="spinner"></div>:null
+          }
       </div>
     )
   }

@@ -41,13 +41,18 @@ export class Capa extends Component {
         return (
     
             <div className="capa">
-                <h3>{name}</h3>
-                <p>{idade}</p>
-                <img src={photo} />
+            {this.props.isFetching.carteirinhas ?
                 <div className="spinner"></div>
-                <div className="change-button">
-                    <a onClick={()=>this.handleClickLabel()} className='btn btn-primary' >Alterar Carteira</a>
-                </div>
+                    : 
+                <React.Fragment>
+                    <h3>{name}</h3>
+                    <p>{idade}</p>
+                    <img src={photo} /> 
+                    <div className="change-button">
+                        <a onClick={()=>this.handleClickLabel()} className='btn btn-primary' >Alterar Carteira</a>
+                    </div>
+                </React.Fragment>
+                }
             </div>
             );
     }

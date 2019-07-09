@@ -13,8 +13,8 @@ export class Agenda extends Component {
         this.state = {};
     }
 
-    componentDidMount(){
-        if(this.props.currentUser){
+    getSnapshotBeforeUpdate(prevProps, prevState){
+        if(JSON.stringify(this.props.currentUser) != JSON.stringify(prevProps.currentUser)){
             this.props.fetchVaccines(this.props.currentUser.id);
         }
     }
@@ -30,12 +30,11 @@ export class Agenda extends Component {
         }); 
     }
 
-    render() {
- 
+    render() { 
     return (
         <div>
             <p>Agenda</p>
-            <Calendar alterVaccineState={this.alterVaccineState.bind(this)} data={this.props.vaccinesData}/>
+            <Calendar isFetching={this.props.isFetching.vacinas} alterVaccineState={this.alterVaccineState.bind(this)} data={this.props.vaccinesData}/>
         </div>
         );
     }
