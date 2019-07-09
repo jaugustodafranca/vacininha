@@ -3,7 +3,8 @@ const initialState = {
   loggedUser: null, 
   currentUser: null,
   carteirinhasData: [],
-  measureDatas: []
+  measureDatas: [],
+  vaccinesData: [],
 };
 
 export default (state = initialState, action = {}) => {
@@ -28,6 +29,11 @@ export default (state = initialState, action = {}) => {
       carteirinhasData: action.payload
     });
     break;
+  case 'VACCINES_DATA':
+    state = Object.assign({}, state, { 
+      vaccinesData: action.payload
+    });
+    break;  
   default:
     break;
   }

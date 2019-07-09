@@ -91,6 +91,30 @@ export const changeUser = (user) => (dispatch) =>{
   });
 }
 
+export const fetchVaccines = (userId) => (dispatch) => {
+  promiseWrapper((resolve, reject, delay) => {
+    request.get(`/vacinas/`+userId)
+      .then((response) => {
+        delay(() => {
+          dispatch({
+            type: 'VACCINES_DATA',
+            errorRequest: false,
+            payload: response.data
+          });
+          resolve();
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: 'VACCINES_DATA',
+          errorRequest: true,
+          payload: []
+        });
+        reject();
+      });
+  });
+};
+
 export const fetchMedidas = () => (dispatch) => {
   promiseWrapper((resolve, reject, delay) => {
     request.get(`/medidas/3`)
