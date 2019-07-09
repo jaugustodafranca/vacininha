@@ -24,25 +24,46 @@ const messages = {
   };
 export default class Calendar extends Component {
   
-    constructor(props){
-        super(props);
-        this.state = {};
-    }
-        render(){
+  constructor(props){
+      super(props);
+      this.state = {
+        parsedData: []
+      };
+  }
 
-        return(
-        <div className='agenda'>
-            <BigCalendar
-            localizer={localizer}
-            events={myEventsList}
-            startAccessor="start"
-            endAccessor="end"
-            messages={messages}
-            views={{
-                month: true,
-                'myweek': Agenda,
-              }}
-            />
-        </div>)
+  getSnapshotBeforeUpdate(prevProps, prevState){
+    if(this.props.data != prevProps.data){
+      var parsed = (this.props.data || []).map((row, index) =>{
+        var obj = {
+          id: index,
+          title: row.name,
+          allDay: true,
+          start: moment(row.vaccine_date),
+          end: moment(row.vaccine_date),
+          status: row.has_applied,
+        }
+        return obj;
+      })
+      this.setState({parsedData:parsed})
+    }
+
+  }
+  render(){
+
+    return(
+      <div className='agenda'>
+          <BigCalendar
+          localizer={localizer}
+          events={this.state.parsedData}
+          startAccessor="start"
+          endAccessor="end"
+          messages={messages}
+          views={{
+              month: true,
+              'myweek': Agenda,
+            }}
+          />
+      </div>
+    )
   }
 }

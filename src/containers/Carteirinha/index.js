@@ -25,7 +25,7 @@ export class Carteirinha extends Component {
       if(!this.props.currentUser){
           this.props.history.push(`/carteiras`);
       }
-    }
+  	}
 
     handleLogout() {
         this.props.history.push(`/login`);

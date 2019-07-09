@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import cellEditFactory from 'react-bootstrap-table2-editor';
-// import paginationFactory from 'react-bootstrap-table2-paginator';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 
 // Redux
 import { connect } from 'react-redux';
@@ -9,10 +9,10 @@ import * as actions from './../actions';
 
 const columns = [{
     dataField: 'weight',
-    text: 'Peso(Kg)'
+    text: 'Peso(Kg)',
 }, {
     dataField: 'height',
-    text: 'Altura(cm)'
+    text: 'Altura(cm)',
 }]
 
 export class Cadastros extends Component {
@@ -41,7 +41,8 @@ export class Cadastros extends Component {
         keyField="id"
         data={ this.props.measureDatas }
         columns={ columns }
-        cellEdit={ cellEditFactory({ mode: 'click' }) }/>
+        cellEdit={ cellEditFactory({ mode: 'click' }) }
+        pagination={ paginationFactory() }/>
          <form className="registros" onSubmit={this.handleSubmit}>
             <label htmlFor="weight">Peso(Kg)</label>
             <input type="number" name="weight" id="weight" min="0" step="0.1"></input>
