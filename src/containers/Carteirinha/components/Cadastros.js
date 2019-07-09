@@ -22,31 +22,57 @@ export class Cadastros extends Component {
         this.state = {
             height: 0,
             weight: 0,
+            date: ""
         };
     }
     
-    componentDidMount() {   
-        this.props.fetchMedidas(this.props.currentUser.id);  
+    componentDidMount() {  
+        if(this.props.currentUser){
+            this.props.fetchMedidas(this.props.currentUser.id);  
+        } 
           
     }
     
+    onHeightChange(value){
+        this.setState({
+            height: value
+        });
+      }
+    
+    onWeightChange(value){
+        this.setState({
+            weight: value
+        });
+    }
+
+    onDateChange(value){
+        this.setState({
+          date: value
+        });
+    }
+
     handleSubmit(event) {
         console.log('Submit', event); 
-        // this.validateMeasure(row, column);
+        
         event.preventDefault();
+        this.props.fetchMedidasAlteradas(this.props.currentUser.id, {user_id: this.props.currentUser.id, height: this.state.height, weight: this.state.weight, date: this.state.date})
+        .then(() => {
+            this.props.fetchMedidas(this.props.currentUser.id);
+        })
     }
-     validateMeasure(row, column) {
-        row[column.dataField] = parseInt(row[column.dataField], 10);
-        try {
-            this.props.fetchMedidasAlteradas(this.props.currentUser.id, {user_id: row.user_id, height: row.height, weight: row.weight, date: row.date})
-            .then(() => {
-                this.props.fetchMedidas(this.props.currentUser.id);
-            })
-        } catch (err) {
-            console.error(err);
-            alert('ENTRADA INVÁLIDA!');
-        }
-     }
+
+    validateMeasure(row, column) {
+    row[column.dataField] = parseInt(row[column.dataField], 10);
+    try {
+        this.props.fetchMedidasAlteradas(this.props.currentUser.id, {user_id: row.user_id, height: row.height, weight: row.weight, date: row.date})
+        .then(() => {
+            this.props.fetchMedidas(this.props.currentUser.id);
+        })
+    } catch (err) {
+        console.error(err);
+        alert('ENTRADA INVÁLIDA!');
+    }
+    }
 
     render() {
     return (
@@ -61,11 +87,13 @@ export class Cadastros extends Component {
            
          }}) }
         pagination={ paginationFactory() }/>
-         <form className="registros" onSubmit={this.handleSubmit(weight, height)}>
+         <form className="registros" onSubmit={this.handleSubmit.bind(this)}>
             <label htmlFor="weight">Peso(Kg)</label>
-            <input type="number" name="weight" id="weight" min="0" step="0.1"></input>
+            <input type="number" onChange={e => this.onHeightChange(e.target.value)} name="weight" id="weight" min="0" step="0.1"></input>
             <label htmlFor="height">Altura(cm)</label>
-            <input type="number" name="height" id="height" min="0" step="0.1"></input>
+            <input type="number" onChange={e => this.onWeightChange(e.target.value)} name="height" id="height" min="0" step="0.1"></input>
+            <label htmlFor="height">Data</label>
+            <input type="date" onChange={e => this.onDateChange(e.target.value)} name="date" id="date"></input>
             <button>Salvar</button>
         </form>
         </div>
