@@ -9,7 +9,8 @@ const initialState = {
   isSuccess: false,
   isCodeValid: true,
   isRecoverSuccess: -1,
-  isPasswordChangeSuccess: -1
+  isPasswordChangeSuccess: -1,
+  user: null,
 };
 
 export default (state = initialState, action = {}, foo) => {
@@ -60,6 +61,11 @@ export default (state = initialState, action = {}, foo) => {
     case 'CODE_INVALID':
       state = Object.assign({}, state, {
         isCodeValid: false
+      });
+      break;
+    case 'APP_SET_USER':
+      state = Object.assign({}, state, {
+        user: action.payload
       });
       break;
     default:

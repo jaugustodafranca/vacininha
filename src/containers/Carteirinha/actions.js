@@ -13,25 +13,36 @@ export const isFetchingData = (is, type) => (dispatch) => {
 
 export const checkLogin = () => (dispatch, store) => { 
   return promiseWrapper((resolve, reject, delay) => { 
-    if (localStorage.getItem('vacininha-jwt')) {
-      dispatch({ type: 'LOGIN_SUCCESS' });
-      dispatch({
-        type: 'APP_SET_USER',
-        payload: users.filter((item) => item.email == localStorage.getItem('vacininha-jwt'))[0]
+    if (localStorage.getItem('vacininha-jwt-uid')) {
+      delay(() => {
+        console.log("user  " + localStorage.getItem('vacininha-jwt-user'))
+        dispatch({ type: 'LOGIN_SUCCESS' });  
+        if (localStorage.getItem('vacininha-jwt-user')) { 
+          dispatch({
+            type: 'CURRENT_USER_ID', 
+            payload: localStorage.getItem('vacininha-jwt-user')
+          });
+          resolve(localStorage.getItem('vacininha-jwt-user'));
+        }else{
+          resolve(0);
+        } 
+          
       });
-      resolve(); 
     }else{
-      dispatch({
-        type: 'CARTEIRAS_DATA',
-        errorRequest: true,
-        payload: []
+      delay(() => {
+        dispatch({
+          type: 'CARTEIRAS_DATA',
+          errorRequest: true,
+          payload: []
+        });
+        resolve(null); 
       }); 
     }
   }); 
 };
 
 export const fetchCarteirinhas = (query) => (dispatch) => { 
-  promiseWrapper((resolve, reject, delay) => { 
+  return promiseWrapper((resolve, reject, delay) => { 
     request.get(`/carteirinhas`)
       .then((response) => {
         delay(() => {
@@ -55,9 +66,17 @@ export const fetchCarteirinhas = (query) => (dispatch) => {
 };
 
 export const changeUser = (user) => (dispatch) =>{
-  return dispatch({
-    type: 'SET_CURRENT_USER',
-    payload: user 
+  
+  return promiseWrapper((resolve, reject, delay) => {
+    delay(() => {
+      console.log(user);
+      localStorage.setItem('vacininha-jwt-user', user.id);
+      dispatch({
+        type: 'SET_CURRENT_USER',
+        payload: user 
+      });
+      resolve();
+    });
   });
 }
 

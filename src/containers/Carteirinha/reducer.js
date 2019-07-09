@@ -5,6 +5,7 @@ const initialState = {
   carteirinhasData: [],
   measureDatas: [],
   vaccinesData: [],
+  currentUserId: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -44,6 +45,13 @@ export default (state = initialState, action = {}) => {
       vaccinesData: action.payload
     });
     break;
+  case 'CURRENT_USER_ID':
+    state = Object.assign({}, state, { 
+      currentUserId: action.payload
+    });
+    console.log(state,'state')
+    break;
+    
     case 'MEASURE_UPDATE_DATAS':
      console.log(state);
       break;  

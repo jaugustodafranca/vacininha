@@ -32,8 +32,9 @@ export class Login extends Component {
             callbacks: {
                 signInSuccessWithAuthResult: function(authResult, redirectUrl) {
                     console.log(authResult);
-                    props.login(authResult);
-                    props.history.push(`carteiras`);
+                    props.login(authResult).then(() =>{
+                        props.history.push(`/carteiras/`); 
+                    });
                     return false;
                   }
             },

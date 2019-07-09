@@ -21,18 +21,17 @@ export class Carteirinha extends Component {
         this.props.history.push(`/carteirinha/${label}`);
     } 
 
-    componentDidMount(){
-      //this.props.checkLogin();
-      this.props.checkLogin().then(() => {
-        console.log(this.props.loggedUser)
-        if(!this.props.loggedUser){
-          console.log("nao ta logado")
-        }else{
-          if(!this.props.currentUser){
-            this.props.history.push(`/carteiras`);
-          }
+    componentDidMount(){ 
+      this.props.checkLogin().then((res) => {  
+        if(!res || res === 0){
+          this.props.history.push(`/carteiras`);
+        }else if(!this.props.currentUser){
+          console.log("entrou aqui");
+          this.props.fetchCarteirinhas().then(() =>{
+            var user = (this.props.carteirinhasData||[]).find(user => user.id == res);
+            this.props.changeUser(user);
+          });
         }
-
       })
       
   	}
@@ -113,5 +112,7 @@ export class Carteirinha extends Component {
 
 export default connect((store) => ({ 
   currentUser: store.carteirinha.currentUser,
-  loggedUser: store.carteirinha.loggedUser
+  loggedUser: store.carteirinha.loggedUser,
+  currentUserId: store.carteirinha.currentUserId,
+  carteirinhasData: store.carteirinha.carteirinhasData,
 }), actions)(Carteirinha);

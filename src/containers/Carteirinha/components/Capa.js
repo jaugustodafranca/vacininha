@@ -16,13 +16,7 @@ export class Capa extends Component {
 
     handleClickLabel(label) {
         this.props.history.push(`/carteiras/`);
-    }
-
-    componentDidMount(){
-        if(!this.props.currentUser){
-            this.props.history.push(`/carteiras`);
-        }
-    }
+    } 
 
     render() {
 

@@ -19,23 +19,21 @@ class Carteiras extends React.Component {
   }
 
   componentDidMount(){
-    this.props.checkLogin().then(() => {
-      console.log(this.props.loggedUser)
-      if(!this.props.loggedUser){
-        console.log("nao ta logado")
+    this.props.checkLogin().then((res)=>{ 
+      console.log(res)
+      if(res || res == 0){ 
+        this.props.fetchCarteirinhas(); 
       }else{
-        if(this.props.currentUser){
-          this.props.fetchCarteirinhas();
-        }
+        //this.props.history.push(`/login/`);
       }
-
-    })
-    
+    });  
   }
 
   changeUser(user){ 
-    this.props.changeUser(user);
-    this.props.history.push(`/carteirinha/`);
+    this.props.changeUser(user).then(() =>{ 
+      console.warn(this.props.currentUser)
+      this.props.history.push(`/carteirinha/`);
+    });
   }
 
   isOpen () {
@@ -157,5 +155,7 @@ class Carteiras extends React.Component {
 export default connect((store) => ({ 
   carteirinhasData: store.carteirinha.carteirinhasData,
   loginIsSuccess: store.login.isSuccess,
-  loginIsRecoverSuccess: store.login.isRecoverSuccess
+  loginIsRecoverSuccess: store.login.isRecoverSuccess,
+  user: store.login.user,
+  currentUser: store.carteirinha.currentUser
 }), actions)(Carteiras);

@@ -50,7 +50,7 @@ export const login = (body) => (dispatch, store) => {
             dispatch({ type: 'LOGIN_SUCCESS' });
             dispatch({
               type: 'APP_SET_USER',
-              payload: users.filter((item) => item.id == '1')[0]
+              payload: user
             });
             resolve();
           }
