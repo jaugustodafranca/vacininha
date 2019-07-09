@@ -33,7 +33,7 @@ export class Login extends Component {
                 signInSuccessWithAuthResult: function(authResult, redirectUrl) {
                     console.log(authResult);
                     props.login(authResult);
-                    props.history.push(`carteirinha`);
+                    props.history.push(`carteiras`);
                     return false;
                   }
             },

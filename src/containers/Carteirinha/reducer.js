@@ -1,22 +1,17 @@
 const initialState = {
-  isSessionActive: null,
-  sectorList: [],
-  sitesList: null,
-  updateTime: null,
-  targets: [],
-  loggedUser: null,
-  userPermissions: null,
-  enterpriseInfo: [],
+  isSessionActive: null, 
+  loggedUser: null, 
+  currentUser: null,
+  carteirinhasData: [],
   measureDatas: []
 };
 
 export default (state = initialState, action = {}) => {
 
   switch (action.type) {
-  case 'APP_SET_USER':
-    state = Object.assign({}, state, {
-      isSessionActive: true,
-      loggedUser: action.payload
+  case 'SET_CURRENT_USER':
+    state = Object.assign({}, state, { 
+      currentUser: action.payload
     });
     break;
   case 'APP_DESTROY_SESSION':
@@ -33,6 +28,11 @@ export default (state = initialState, action = {}) => {
       measureDatas: action.payload
     });
     break;  
+  case 'CARTEIRAS_DATA':
+    state = Object.assign({}, state, { 
+      carteirinhasData: action.payload
+    });
+    break;
   default:
     break;
   }

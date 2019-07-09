@@ -59,25 +59,23 @@ export const fetchEfficiencyData = (path, query) => (dispatch) => {
   });
 };
 
-export const fetchCarteirinhas = (query) => (dispatch) => {
-  dispatch(isFetchingData(true, 'events'));
+export const fetchCarteirinhas = (query) => (dispatch) => { 
   promiseWrapper((resolve, reject, delay) => {
     console.log(localStorage.getItem('vacininha-jwt-uid'));
     request.get(`/carteirinhas`)
       .then((response) => {
         delay(() => {
           dispatch({
-            type: 'MANUAL_EVENTS',
+            type: 'CARTEIRAS_DATA',
             errorRequest: false,
             payload: response.data
           });
-          resolve();
-          dispatch(isFetchingData(false, 'events'));
+          resolve(); 
         });
       })
       .catch((error) => {
         dispatch({
-          type: 'MANUAL_EVENTS',
+          type: 'CARTEIRAS_DATA',
           errorRequest: true,
           payload: []
         });
@@ -85,6 +83,13 @@ export const fetchCarteirinhas = (query) => (dispatch) => {
       });
   });
 };
+
+export const changeUser = (user) => (dispatch) =>{
+  return dispatch({
+    type: 'SET_CURRENT_USER',
+    payload: user 
+  });
+}
 
 export const fetchMedidas = () => (dispatch) => {
   promiseWrapper((resolve, reject, delay) => {

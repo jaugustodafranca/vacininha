@@ -2,13 +2,26 @@ import React from 'react';
 import logo from '../../images/vacininha.png';
 import Card from '../../components/card'
 
+// Redux
+import { connect } from 'react-redux';
+import * as actions from '../Carteirinha/actions';
+
 class Carteiras extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-    
+    this.state = { 
     };
+  }
+
+  componentDidMount(){
+    this.props.fetchCarteirinhas();
+  }
+
+  changeUser(user){
+    console.log(user)
+    this.props.changeUser(user);
+    this.props.history.push(`/carteirinha/`);
   }
 
   render() {
@@ -22,11 +35,12 @@ class Carteiras extends React.Component {
         male:false
       }
     ]
-    const cards = (users || []).map(user=>{
+    const cards = (this.props.carteirinhasData || []).map(user=>{
       return (
-        <Card {...user} />
+        <Card changeUser={this.changeUser.bind(this)} {...user} />
       )
     });
+    console.log(this.props.carteirinhasData)
     return(
       <React.Fragment>
         <div className="main-container">
@@ -40,7 +54,7 @@ class Carteiras extends React.Component {
                     { cards }
                   </div>
                   <div className="display-button">
-                    <a href="#" className='btn btn-primary' id='add-button'>Adicionar Carteira</a>
+                    <a className='btn btn-primary' id='add-button'>Adicionar Carteira</a>
                   </div>
                 </div>
             </div>
@@ -49,5 +63,10 @@ class Carteiras extends React.Component {
     );
   }
 }
+ 
 
-export default Carteiras;
+export default connect((store) => ({ 
+  carteirinhasData: store.carteirinha.carteirinhasData,
+  loginIsSuccess: store.login.isSuccess,
+  loginIsRecoverSuccess: store.login.isRecoverSuccess
+}), actions)(Carteiras);
