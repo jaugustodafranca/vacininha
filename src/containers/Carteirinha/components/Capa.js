@@ -20,8 +20,8 @@ export class Capa extends Component {
 
     render() {
 
-        const male_photo = 'https://img.icons8.com/color/1600/circled-user-male-skin-type-1-2.png'
-        const female_photo = 'https://www.grupoconduzir.com.br/wp-content/uploads/2017/10/avatar-pessoa-mulher.png'
+        const male_photo = 'https://firebasestorage.googleapis.com/v0/b/vacininha.appspot.com/o/homem.png?alt=media&token=7418e492-c1c4-4d15-a3c9-193a2d2211f4'
+        const female_photo = 'https://firebasestorage.googleapis.com/v0/b/vacininha.appspot.com/o/mulher.png?alt=media&token=d566d01d-4681-4dbe-bcbb-06875fc0fb1e'
         var photo = male_photo;
         var idade = 0;
         var name = ""
