@@ -65,6 +65,7 @@ export default class Calendar extends Component {
               'myweek': Agenda,
             }}
           />
+          <div className="spinner"></div>
       </div>
     )
   }

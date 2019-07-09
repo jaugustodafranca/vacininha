@@ -97,6 +97,7 @@ class Carteiras extends React.Component {
             </div>
             <div className=" carteirinha" >
                 <div className="content">
+                <div className="spinner"></div>  
                   <div className="display-cards"> 
                     { cards }
                   </div>
