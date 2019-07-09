@@ -138,3 +138,27 @@ export const fetchMedidas = (userId) => (dispatch) => {
       });
   });
 };
+
+export const fetchMedidasAlteradas = (userId, body) => (dispatch) => {
+  return promiseWrapper((resolve, reject, delay) => {
+    request.post(`/medidas/ `,body)
+      .then((response) => {
+        delay(() => {
+          dispatch({
+            type: 'MEASURE_UPDATE_DATAS',
+            errorRequest: false,
+            payload: response.data
+          });
+          resolve();
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: 'MEASURE_UPDATE_DATAS_ERROR',
+          errorRequest: true,
+          payload: error
+        });
+        reject();
+      });
+  });
+};
