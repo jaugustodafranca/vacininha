@@ -6,7 +6,8 @@ const initialState = {
   targets: [],
   loggedUser: null,
   userPermissions: null,
-  enterpriseInfo: []
+  enterpriseInfo: [],
+  measureDatas: []
 };
 
 export default (state = initialState, action = {}) => {
