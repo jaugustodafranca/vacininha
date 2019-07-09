@@ -19,12 +19,22 @@ export class Carteirinha extends Component {
 
     handleClickLabel(label) {
         this.props.history.push(`/carteirinha/${label}`);
-    }
+    } 
 
     componentDidMount(){
-      if(!this.props.currentUser){
-        this.props.history.push(`/carteiras`);
-      }
+      //this.props.checkLogin();
+      this.props.checkLogin().then(() => {
+        console.log(this.props.loggedUser)
+        if(!this.props.loggedUser){
+          console.log("nao ta logado")
+        }else{
+          if(!this.props.currentUser){
+            this.props.history.push(`/carteiras`);
+          }
+        }
+
+      })
+      
   	}
 
     handleLogout() {
@@ -103,4 +113,5 @@ export class Carteirinha extends Component {
 
 export default connect((store) => ({ 
   currentUser: store.carteirinha.currentUser,
+  loggedUser: store.carteirinha.loggedUser
 }), actions)(Carteirinha);

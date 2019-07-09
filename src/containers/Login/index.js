@@ -20,7 +20,7 @@ export class Login extends Component {
     }
 
     handleLogin() {
-        this.props.history.push(`carteirinha`);
+        this.props.checkLogin();
     }
 
     render() {

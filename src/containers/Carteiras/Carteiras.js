@@ -19,12 +19,21 @@ class Carteiras extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchCarteirinhas();
+    this.props.checkLogin().then(() => {
+      console.log(this.props.loggedUser)
+      if(!this.props.loggedUser){
+        console.log("nao ta logado")
+      }else{
+        if(this.props.currentUser){
+          this.props.fetchCarteirinhas();
+        }
+      }
+
+    })
     
   }
 
-  changeUser(user){
-    console.log(user)
+  changeUser(user){ 
     this.props.changeUser(user);
     this.props.history.push(`/carteirinha/`);
   }
@@ -80,8 +89,7 @@ class Carteiras extends React.Component {
       return (
         <Card changeUser={this.changeUser.bind(this)} {...user} />
       )
-    });
-    console.log(this.props.carteirinhasData)
+    }); 
     return(
       <React.Fragment>
         <div className="main-container">

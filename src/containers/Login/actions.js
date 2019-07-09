@@ -46,8 +46,7 @@ export const login = (body) => (dispatch, store) => {
         request.defaults.headers['Authorization'] = 'Bearer ' + idToken;
         request.defaults.headers['Uid_firebase'] = user.uid;
         delay(() => {
-          if (idToken) {
-            console.log('foi porra')
+          if (idToken) { 
             dispatch({ type: 'LOGIN_SUCCESS' });
             dispatch({
               type: 'APP_SET_USER',

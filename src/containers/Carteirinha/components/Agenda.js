@@ -27,13 +27,11 @@ export class Agenda extends Component {
         }
         this.props.changeVaccine(body).then(() => {
             this.props.fetchVaccines(body.user_id);
-        });
-        console.log(row)
+        }); 
     }
 
     render() {
-
-    console.log(this.props.vaccinesData);
+ 
     return (
         <div>
             <p>Agenda</p>

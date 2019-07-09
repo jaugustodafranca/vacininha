@@ -14,8 +14,7 @@ class View extends React.Component {
     let org =  {};
     this.props.events.forEach(e => {
         (org[moment(e.start).unix()])? org[moment(e.start).unix()].push(e) : org[moment(e.start).unix()] = [e];
-    });
-    console.log(org)
+    }); 
     let events = this.props.events.sort((a,b) =>{ return a.start > b.start});
     let eventList = Object.values(org).map(i => {
         return i.map((item, index) =>{
@@ -29,8 +28,7 @@ class View extends React.Component {
             );
         })
 
-    });
-    console.log(events)
+    }); 
     return (
         <div className='rbc-agenda-view'>
             <table className='rbc-agenda-table'>

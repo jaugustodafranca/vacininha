@@ -15,6 +15,11 @@ export default (state = initialState, action = {}) => {
       currentUser: action.payload
     });
     break;
+  case 'APP_SET_USER':
+    state = Object.assign({}, state, { 
+      loggedUser: action.payload
+    });
+    break;
   case 'APP_DESTROY_SESSION':
     state = Object.assign({}, state, {
       isSessionActive: false,

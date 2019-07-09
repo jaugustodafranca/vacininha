@@ -10,58 +10,28 @@ export const isFetchingData = (is, type) => (dispatch) => {
   });
 };
 
-export const fetchProductionData = (path, query) => (dispatch) => {
-  promiseWrapper((resolve, reject, delay) => {
-    request.get(`production/${path.component + '/' + path.componentId}/products${buildQuery(query, queryCustomRange)}`)
-      .then((response) => {
-        delay(() => {
-          dispatch({
-            type: 'FETCH_PRODUCTION_DATA',
-            payload: response.data
-          });
-          resolve();
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: 'FETCH_PRODUCTION_DATA_ERROR',
-          payload: error
-        });
-        reject();
-      });
-  });
-};
 
-export const fetchEfficiencyData = (path, query) => (dispatch) => {
-  dispatch(isFetchingData(true, 'efficiencyData'));
-  return promiseWrapper((resolve, reject, delay) => {
-    request.get(`efficiency/${path.component + '/' + path.componentId}${
-      buildQuery(query, queryCustomRange)
-      }`)
-      .then((response) => {
-        delay(() => {
-          dispatch(isFetchingData(false, 'efficiencyData'));
-          dispatch({
-            type: 'FETCH_EFFICIENCY_DATA',
-            payload: response.data
-          });
-          resolve();
-        });
-      })
-      .catch((error) => {
-        dispatch(isFetchingData(false, 'efficiencyData'));
-        dispatch({
-          type: 'FETCH_EFFICIENCY_DATA_ERROR',
-          payload: error
-        });
-        reject();
+export const checkLogin = () => (dispatch, store) => { 
+  return promiseWrapper((resolve, reject, delay) => { 
+    if (localStorage.getItem('vacininha-jwt')) {
+      dispatch({ type: 'LOGIN_SUCCESS' });
+      dispatch({
+        type: 'APP_SET_USER',
+        payload: users.filter((item) => item.email == localStorage.getItem('vacininha-jwt'))[0]
       });
-  });
+      resolve(); 
+    }else{
+      dispatch({
+        type: 'CARTEIRAS_DATA',
+        errorRequest: true,
+        payload: []
+      }); 
+    }
+  }); 
 };
 
 export const fetchCarteirinhas = (query) => (dispatch) => { 
-  promiseWrapper((resolve, reject, delay) => {
-    console.log(localStorage.getItem('vacininha-jwt-uid'));
+  promiseWrapper((resolve, reject, delay) => { 
     request.get(`/carteirinhas`)
       .then((response) => {
         delay(() => {

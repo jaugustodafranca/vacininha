@@ -51,8 +51,7 @@ export class Cadastros extends Component {
         });
     }
 
-    handleSubmit(event) {
-        console.log('Submit', event); 
+    handleSubmit(event) { 
         
         event.preventDefault();
         this.props.fetchMedidasAlteradas(this.props.currentUser.id, {user_id: this.props.currentUser.id, height: this.state.height, weight: this.state.weight, date: this.state.date})

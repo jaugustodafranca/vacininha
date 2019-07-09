@@ -20,7 +20,6 @@ export class Graficos extends Component {
     }
 
     render() {
-        console.log(this.props.measureDatas)
         let weight = (this.props.measureDatas || []).map((row)=>{
             let res = {
                 peso: row.weight,
