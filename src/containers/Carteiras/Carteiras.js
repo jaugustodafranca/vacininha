@@ -11,6 +11,7 @@ class Carteiras extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
+      isOpen: false,
     };
   }
 
@@ -22,6 +23,15 @@ class Carteiras extends React.Component {
     console.log(user)
     this.props.changeUser(user);
     this.props.history.push(`/carteirinha/`);
+  }
+
+  isOpen () {
+    this.setState(
+      {
+        isOpen: !this.state.isOpen
+      }
+        
+    )
   }
 
   render() {
@@ -54,7 +64,7 @@ class Carteiras extends React.Component {
                     { cards }
                   </div>
                   <div className="display-button">
-                    <a className='btn btn-primary' id='add-button'>Adicionar Carteira</a>
+                    <a onClick={()=>this.isOpen()} className='btn btn-primary' id='add-button'>Adicionar Carteira</a>
                   </div>
                 </div>
             </div>
