@@ -12,6 +12,11 @@ export class Agenda extends Component {
         super(props);
         this.state = {};
     }
+    componentDidMount(){
+        if(this.props.currentUser){
+            this.props.fetchVaccines(this.props.currentUser.id);
+        }
+    }
 
     getSnapshotBeforeUpdate(prevProps, prevState){
         if(JSON.stringify(this.props.currentUser) != JSON.stringify(prevProps.currentUser)){
