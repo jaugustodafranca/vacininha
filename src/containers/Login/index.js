@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 
 export class Login extends Component {
-  
+
     constructor(props){
         super(props);
         this.state = {
@@ -33,7 +33,7 @@ export class Login extends Component {
                 signInSuccessWithAuthResult: function(authResult, redirectUrl) {
                     console.log(authResult);
                     props.login(authResult).then(() =>{
-                        props.history.push(`/carteiras/`); 
+                        props.history.push(`/carteiras/`);
                     });
                     return false;
                   }
@@ -59,11 +59,11 @@ export class Login extends Component {
                     <div className="home-texto">
                         <h1>O que é a Vacininha?</h1>
                         <p>Além de informar todas as datas de vacinação,
-                        a Vacininha também faz o acompanhamento do 
+                        a Vacininha também faz o acompanhamento do
                         crescimento do seu filho (peso e altura).
                         O melhor é que tudo fica disponível na plataforma
                         para você acessar de onde e quando você quiser!
-                        </p>   
+                        </p>
                     </div>
                 </div>
                 <div className="home-right">
@@ -81,7 +81,7 @@ export class Login extends Component {
     }
 }
 
-export default connect((store) => ({ 
+export default connect((store) => ({
     eventKey: store.login.eventKey,
     loginIsSuccess: store.login.isSuccess,
     loginIsRecoverSuccess :store.login.isRecoverSuccess

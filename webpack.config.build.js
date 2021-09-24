@@ -21,10 +21,10 @@ module.exports = smp.wrap({
           use: {
             loader: "babel-loader"
           }
-        },{ 
-          test: /\.scss$/i, 
-          exclude: /node_modules/, 
-          use: ['style-loader', 'css-loader', 'sass-loader'] 
+        },{
+          test: /\.scss$/i,
+          exclude: /node_modules/,
+          use: ['style-loader', 'css-loader', 'sass-loader']
         }, {
             test: /\.css$/,
             loader: "style-loader!css-loader"
@@ -46,8 +46,8 @@ module.exports = smp.wrap({
             'HOMEPAGE': JSON.stringify('/vacininha/'),
             'PUBLIC_URL': JSON.stringify('/public'),
             'BASE_API_URL': JSON.stringify(
-              'https://vacininha.herokuapp.com/' 
+              'https://vacininha.herokuapp.com/'
             )
         })
       ]
-  });    
+  });

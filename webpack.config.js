@@ -1,11 +1,9 @@
-const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const smp = new SpeedMeasurePlugin();
 const WorkboxPlugin = require('workbox-webpack-plugin');
 
-module.exports = smp.wrap({
+module.exports = {
     entry: ['./src/index.js'],
     output: { pathinfo: true },
     devtool: 'eval',
@@ -22,10 +20,10 @@ module.exports = smp.wrap({
           use: {
             loader: "babel-loader"
           }
-        },{ 
-          test: /\.scss$/i, 
-          exclude: /node_modules/, 
-          use: ['style-loader', 'css-loader', 'sass-loader'] 
+        },{
+          test: /\.scss$/i,
+          exclude: /node_modules/,
+          use: ['style-loader', 'css-loader', 'sass-loader']
         }, {
             test: /\.css$/,
             loader: "style-loader!css-loader"
@@ -38,7 +36,6 @@ module.exports = smp.wrap({
     },
     plugins: [
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
           inject: true,
           template: './public/index.html'
@@ -53,4 +50,4 @@ module.exports = smp.wrap({
         }),
         new WorkboxPlugin.GenerateSW()
       ]
-  });    
+  };

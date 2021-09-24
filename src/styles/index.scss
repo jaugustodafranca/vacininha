@@ -1,3 +1,4 @@
+@import 'App';
 @import 'notification';
 @import 'Form';
 @import 'Carteiras';
@@ -105,10 +106,10 @@ code {
       }
     }
   }
-  
+
   .content{
     margin-top: -1px;
-    padding: 20px; 
+    padding: 20px;
     min-height:  100px;
   }
 }
@@ -146,7 +147,7 @@ code {
   margin-right: auto;
   margin-left: auto;
   position: relative;
-  background-color: #fff;  
+  background-color: #fff;
   border-radius: 29px;
 }
 .grafico{
@@ -158,7 +159,7 @@ code {
   height: 100%;
   min-height: 100vh;
   display: inline-flex;
-  background-color: #ade9ff;  
+  background-color: #ade9ff;
   p,h1,span{
     font-family: 'Courier New', Courier, monospace;
   }
@@ -190,7 +191,7 @@ code {
       &.rbc-agenda-date-cell{
         vertical-align: middle;
       }
-      
+
       &.rbc-agenda-status-cell{
         padding: 0;
         .icon.is-large{
@@ -210,14 +211,14 @@ code {
     margin:auto;
     height: 350px;
   }
-  
+
 }
 .home-right{
 
   width: 33%;
   padding: 3%;
   display: inline-flex;
-  
+
   span{
     font-family: 'Courier New', Courier, monospace;
   }
@@ -269,7 +270,7 @@ code {
       border-radius: 15px;
       min-height: calc(100vh - 100px);
       margin: 0px 10px 10px;
-    
+
     }
     .labels {
       display: block;
@@ -277,7 +278,7 @@ code {
       width: 100%;
       max-height: 0px;
       overflow: hidden;
-      transition:  0.9s ease-in-out;      
+      transition:  0.9s ease-in-out;
       border-radius: 15px;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
