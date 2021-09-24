@@ -5,25 +5,10 @@ import myEventsList from './events.js'
 import '../styles/react-big-calendar.scss';
 import Agenda from './customAgenda'
 
-moment.locale('pt-br')
-const localizer = BigCalendar.momentLocalizer(moment)
-const messages = {
-    allDay: 'Dia inteiro',
-    previous: 'Anterior',
-    next: 'Próximo',
-    today: 'Hoje',
-    month: 'Mês',
-    week: 'Semana',
-    day: 'Dia',
-    agenda: 'Agenda',
-    date: 'Data',
-    time: 'Hora',
-    event: 'Evento',
-    myweek: 'Eventos',
-    showMore: total => `+ ${total} evento(s) adicionais(s)`
-  };
-export default class Calendar extends Component {
-  
+import { withTranslation } from 'react-i18next';
+
+class Calendar extends Component {
+
   constructor(props){
       super(props);
       this.state = {
@@ -52,6 +37,26 @@ export default class Calendar extends Component {
   }
   render(){
 
+    const language = this.props.i18n.language === 'pt' ? 'pt-br' : 'en-US'
+    moment.locale(language)
+    const localizer = BigCalendar.momentLocalizer(moment)
+    const { t } = this.props
+    const messages = {
+        allDay:  t("allDay"),
+        previous: t("previous"),
+        next: t("next"),
+        today: t("today"),
+        month: t("month"),
+        week: t("week"),
+        day: t("day"),
+        agenda: "Agenda",
+        date: t("date"),
+        time: t("time"),
+        event: t("event"),
+        myweek: t("myweek"),
+        showMore: total => `+ ${total} ${t('eventsAdded')}`
+      };
+
     return(
       <div className='agenda'>
           <BigCalendar
@@ -74,3 +79,5 @@ export default class Calendar extends Component {
     )
   }
 }
+
+export default withTranslation()(Calendar)

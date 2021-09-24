@@ -15,11 +15,6 @@ const routes = [{
   path: '/carteirinha/agenda',
   exact: true,
   component: Agenda
-}, {
-  name: 'Gráficos',
-  path: '/carteirinha/graficos',
-  exact: true,
-  component: Graficos
 },{
   name: 'Capa',
   path: '/carteirinha/capa',

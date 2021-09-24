@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import bebe from '../../../images/bebe.png';
 import moment from 'moment';
+import { withTranslation } from 'react-i18next';
 
 // Redux
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 export class Capa extends Component {
-  
+
     constructor(props){
         super(props);
         this.state = {
@@ -16,7 +17,7 @@ export class Capa extends Component {
 
     handleClickLabel(label) {
         this.props.history.push(`/carteiras/`);
-    } 
+    }
 
     render() {
 
@@ -30,26 +31,26 @@ export class Capa extends Component {
             photo = (this.props.currentUser.photo_url && this.props.currentUser.photo_url!= "undefined" &&this.props.currentUser.photo_url != "")? this.props.currentUser.photo_url:(!this.props.currentUser.gender_male)? female_photo: male_photo;
             var diff = moment().diff(this.props.currentUser.birth_date, 'days');
             if(parseInt(diff+'') < 31){
-                idade = diff + " dias";
+                idade = diff + ` ${this.props.t("days")}`;
             }else if(parseInt(diff+'') < 365){
-                idade = moment().diff(this.props.currentUser.birth_date, 'months') + " Meses";
+                idade = moment().diff(this.props.currentUser.birth_date, 'months') + ` ${this.props.t("months")}`;
             }else{
-                idade = moment().diff(this.props.currentUser.birth_date, 'years') + " Anos";
+                idade = moment().diff(this.props.currentUser.birth_date, 'years') + ` ${this.props.t("years")}`;
             }
         }
 
         return (
-    
+
             <div className="capa">
             {this.props.isFetching.carteirinhas ?
                 <div className="spinner"></div>
-                    : 
+                    :
                 <React.Fragment>
                     <h3>{name}</h3>
                     <p>{idade}</p>
-                    <img src={photo} /> 
+                    <img src={photo} />
                     <div className="change-button">
-                        <a onClick={()=>this.handleClickLabel()} className='btn btn-primary' >Alterar Carteira</a>
+                        <a onClick={()=>this.handleClickLabel()} className='btn btn-primary' >{this.props.t("changeCard")}</a>
                     </div>
                 </React.Fragment>
                 }
@@ -57,7 +58,7 @@ export class Capa extends Component {
             );
     }
 }
-export default connect((store) => ({ 
+export default connect((store) => ({
     currentUser: store.carteirinha.currentUser,
     isFetching: store.carteirinha.isFetching
-  }), actions)(Capa);
+  }), actions)(withTranslation()(Capa));

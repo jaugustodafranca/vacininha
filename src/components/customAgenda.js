@@ -6,7 +6,12 @@ import BigCalendar from 'react-big-calendar'
 import TimeGrid from 'react-big-calendar/lib/TimeGrid'
 import moment from 'moment';
 import Icon from './Icon'
+import { useTranslation } from 'react-i18next';
 
+const DateItem = ({ date }) => {
+  const {t} = useTranslation()
+  return t("formatDate", {date: date.toDate()})
+}
 class View extends React.Component {
   render() {
     let { date } = this.props
@@ -14,31 +19,24 @@ class View extends React.Component {
     let org =  {};
     this.props.events.forEach(e => {
         (org[moment(e.start).unix()])? org[moment(e.start).unix()].push(e) : org[moment(e.start).unix()] = [e];
-    }); 
+    });
     let events = this.props.events.sort((a,b) =>{ return a.start > b.start});
     let eventList = Object.values(org).map(i => {
         return i.map((item, index) =>{
-            let iconClass = (item.status == undefined || item.status == null)? 'question-circle':(item.status)?'check-circle':'times-circle' 
+            let iconClass = (item.status == undefined || item.status == null)? 'question-circle':(item.status)?'check-circle':'times-circle'
             return(
                 <tr onClick={() => this.props.alterVaccineState(item)}>
-                    {index ==0 ?<td rowspan={i.length} className='rbc-agenda-date-cell'>{moment(item.start).format('DD/MM/YYYY')}</td>:null}
+                    {index ==0 ?<td rowspan={i.length} className='rbc-agenda-date-cell'><DateItem date={item.start} /></td>:null}
                     <td ref="a" className='rbc-agenda-status-cell'><Icon name={iconClass} fal large/></td>
                     <td ref="b" className='rbc-agenda-event-cell'>{item.title}</td>
                 </tr>
             );
         })
 
-    }); 
+    });
     return (
         <div className='rbc-agenda-view'>
             <table className='rbc-agenda-table'>
-                <thead>
-                    <tr>
-                        <th ref="dateCol" className='rbc-header'>Data</th>
-                        <th ref="a" className='rbc-header'>Status</th>
-                        <th ref="b" className='rbc-header'>Tipo</th>
-                    </tr>
-                </thead>
                 <tbody>
                     {eventList}
                 </tbody>
@@ -77,7 +75,7 @@ View.navigate = (date, action) => {
 }
 
 View.title = date => {
-  return `Todos as vacinas`
+  return ``
 }
 
 export default View

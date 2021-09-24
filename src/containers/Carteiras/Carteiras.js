@@ -1,17 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import moment from 'moment';
+import { withTranslation } from 'react-i18next';
+
 import logo from '../../images/vacininha.png';
 import Card from '../../components/card'
 
-// Redux
-import { connect } from 'react-redux';
 import * as actions from '../Carteirinha/actions';
-import moment from 'moment';
+
 
 class Carteiras extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       isOpen: false,
       name: String,
       gender: String,
@@ -20,25 +22,25 @@ class Carteiras extends React.Component {
   }
 
   componentDidMount(){
-    this.props.checkLogin().then((res)=>{ 
+    this.props.checkLogin().then((res)=>{
       console.log(res)
-      if(res || res == 0){ 
-        this.props.fetchCarteirinhas(); 
+      if(res || res == 0){
+        this.props.fetchCarteirinhas();
       }else{
         this.props.history.push(`/login/`);
       }
-    });  
+    });
   }
 
-  changeUser(user){ 
-    this.props.changeUser(user).then(() =>{ 
+  changeUser(user){
+    this.props.changeUser(user).then(() =>{
       console.warn(this.props.currentUser)
       this.props.history.push(`/carteirinha/`);
     });
   }
 
   isOpen () {
-    this.setState({ 
+    this.setState({
       isOpen: !this.state.isOpen
       })
   }
@@ -75,7 +77,7 @@ class Carteiras extends React.Component {
 
   render() {
     const users = [
-      { 
+      {
         nome:'Usuário',
         male: true
       },
@@ -88,8 +90,12 @@ class Carteiras extends React.Component {
       return (
         <Card changeUser={this.changeUser.bind(this)} {...user} />
       )
-    }); 
+    });
+    const { t } = this.props
+    console.log(this.props.i18n.language)
     console.log(this.props.isFetching.carteirinhas)
+
+
     return(
       <React.Fragment>
         <div className="main-container">
@@ -98,22 +104,22 @@ class Carteiras extends React.Component {
                 <h1>Vacininha</h1>
             </div>
             <div className=" carteirinha" >
-                <div className="content"> 
-                  <div className="display-cards"> 
+                <div className="content">
+                  <div className="display-cards">
                     {this.props.isFetching.carteirinhas?
-                    <div className="spinner"></div> : 
+                    <div className="spinner"></div> :
                       cards }
                   </div>
                   <div className="display-button">
-                    <a onClick={()=>this.isOpen()} className='btn btn-primary' id='add-button'>Adicionar Carteira</a>
+                    <a onClick={()=>this.isOpen()} className='btn btn-primary' id='add-button'>{t("addCard")}</a>
                   </div>
                 </div>
-              {this.state.isOpen ? 
+              {this.state.isOpen ?
                 <div className="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                   <div className="modal-content">
                     <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLabel">Novo(a) usuário(a)</h5>
+                      <h5 className="modal-title" id="exampleModalLabel">{t("newUser")}</h5>
                       <button type="button" className="close" onClick={()=>this.isOpen()} data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -121,33 +127,33 @@ class Carteiras extends React.Component {
                     <div className="modal-body">
                       <form>
                         <div className="form-group">
-                          <label for="recipient-name" className="col-form-label">Nome:</label>
+                          <label for="recipient-name" className="col-form-label">{t('name')}:</label>
                           <input type="text" onChange={e => this.onNameChange(e.target.value)} className="form-control" id="recipient-name" />
                         </div>
                         <div className="form-group">
-                          <label for="recipient-name" className="col-form-label">Gênero:</label>
+                          <label for="recipient-name" className="col-form-label">{t('gender')}:</label>
                           <select type="text" onChange={e => this.onGenderChange(e.target.value)} className="form-control" id="recipient-gender">
-                            <option value="false">Feminino</option>
-                            <option value="true">Masculino</option>
+                            <option value="false">{t('female')}</option>
+                            <option value="true">{t('male')}</option>
                           </select>
                         </div>
                         <div className="form-group">
-                          <label for="recipient-name" className="col-form-label">Data de nascimento:</label>
-                          <input type="date" onChange={e => this.onBirthdayChange(e.target.value)} max={moment().format("YYYY-MM-DD")}className="form-control" id="recipient-birthday" />
+                          <label for="recipient-name" className="col-form-label">{t('birthDate')}:</label>
+                          <input type="date" onChange={e => this.onBirthdayChange(e.target.value)} max={moment().format("YYYY-MM-DD")} className="form-control" id="recipient-birthday" />
                         </div>
                         <div className="form-group">
-                          <label for="recipient-name" className="col-form-label">Foto:</label>
+                          <label for="recipient-name" className="col-form-label">{t("photo")}:</label>
                           <input type="file" className="form-control" id="recipient-photo" />
                         </div>
                       </form>
                     </div>
                     <div className="modal-footer">
-                      <button type="button" onClick={()=>this.isOpen()} className="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                      <button type="button" onClick={()=>this.saved()} className="btn btn-primary">Salvar</button>
+                      <button type="button" onClick={()=>this.isOpen()} className="btn btn-secondary" data-dismiss="modal">{t('close')}</button>
+                      <button type="button" onClick={()=>this.saved()} className="btn btn-primary">{t('save')}</button>
                     </div>
                   </div>
                 </div>
-              </div> : null  
+              </div> : null
                 }
               </div>
           </div>
@@ -155,12 +161,12 @@ class Carteiras extends React.Component {
     );
   }
 }
- 
-export default connect((store) => ({ 
+
+export default connect((store) => ({
   carteirinhasData: store.carteirinha.carteirinhasData,
   loginIsSuccess: store.login.isSuccess,
   loginIsRecoverSuccess: store.login.isRecoverSuccess,
   user: store.login.user,
   currentUser: store.carteirinha.currentUser,
   isFetching: store.carteirinha.isFetching
-}), actions)(Carteiras);
+}), actions)(withTranslation()(Carteiras));

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import Calendar from "../../components/Calendar.js";
-import logo from '../../images/vacininha.png';
-import ChildRoutes from '../../core/ChildRoutes'; 
-
-// Redux
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
+
+import logo from '../../images/vacininha.png';
+import ChildRoutes from '../../core/ChildRoutes';
 import * as actions from './actions';
 
 export class Carteirinha extends Component {
-  
+
     constructor(props){
         super(props);
         this.state = {
@@ -19,20 +18,20 @@ export class Carteirinha extends Component {
 
     handleClickLabel(label) {
         this.props.history.push(`/carteirinha/${label}`);
-    } 
+    }
 
-    componentDidMount(){ 
-      this.props.checkLogin().then((res) => {  
+    componentDidMount(){
+      this.props.checkLogin().then((res) => {
         if(!res || res === 0){
           this.props.history.push(`/carteiras`);
-        }else if(!this.props.currentUser){ 
+        }else if(!this.props.currentUser){
           this.props.fetchCarteirinhas().then(() =>{
-            var user = (this.props.carteirinhasData||[]).find(user => user.id == res);
+            var user = (this.props.carteirinhasData||[]).find(user => user.id === res);
             this.props.changeUser(user);
           });
         }
       })
-      
+
   	}
 
     handleLogout() {
@@ -46,23 +45,19 @@ export class Carteirinha extends Component {
     render() {
 
         var labels = [{
-            name: 'Capa',
+            name: this.props.t('frontCover'),
             key: 'capa',
             color: 'pink'
           }, {
-            name: 'Cadastros',
+            name: this.props.t('registries'),
             key: 'cadastros',
             color: 'orange'
           }, {
             name: 'Agenda',
             key: 'agenda',
             color: 'blue'
-          }, {
-            name: 'Gráficos',
-            key: 'graficos',
-            color: 'green'
           }];
-      
+
         const labelsComponent = labels.map((item) => {
           const isActive = item.key === this.props.match.params.tab;
           const CSSClass = `label ${item.color} ${ isActive ? 'is-selected' : '' }`;
@@ -80,7 +75,7 @@ export class Carteirinha extends Component {
 
     return (
         <React.Fragment>
-        
+
         <div className="main-container">
             <div className="title">
                 <img src={logo} alt="Logo vacininha"/>
@@ -92,8 +87,8 @@ export class Carteirinha extends Component {
             <div className=" carteirinha" >
                 <div className={cssLabels}>
                     {labelsComponent}
-                    <button className="label brown"  onClick={() => this.handleChangeUser()}>Trocar</button>
-                    <button className="label yellow"  onClick={() => this.handleLogout()}>Sair</button>
+                    <button className="label brown"  onClick={() => this.handleChangeUser()}>{this.props.t('change')}</button>
+                    <button className="label yellow"  onClick={() => this.handleLogout()}>{this.props.t('logout')}</button>
                 </div>
                 <div className="content">
                     <ChildRoutes {...this.props} />
@@ -109,9 +104,9 @@ export class Carteirinha extends Component {
     }
 }
 
-export default connect((store) => ({ 
+export default connect((store) => ({
   currentUser: store.carteirinha.currentUser,
   loggedUser: store.carteirinha.loggedUser,
   currentUserId: store.carteirinha.currentUserId,
   carteirinhasData: store.carteirinha.carteirinhasData,
-}), actions)(Carteirinha);
+}), actions)(withTranslation()(Carteirinha));
